@@ -1,51 +1,53 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Bruno Garcia | Currículo Online</title>
-<link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bruno Garcia | Currículo Online</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<!-- Fundo animado -->
-<div id="particles-js"></div>
+    <div id="particles-js"></div>
 
-<!-- Navbar -->
-<nav class="navbar">
-    <ul class="menu">
-        <li><a href="#sobre">Sobre Mim</a></li>
-        <li><a href="#habilidades">Habilidades</a></li>
-        <li><a href="#projetos">Portfólio</a></li>
-        <li><a href="#experiencias">Experiências</a></li>
-        <li><a href="#formacao">Formação</a></li>
-        <li><a href="#contato">Contato</a></li>
+    <nav class="navbar">
+    <div class="logo">Bruno Garcia</div>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <ul class="menu" id="menu">
+            <li><a href="#sobre">Sobre Mim</a></li>
+            <li><a href="#habilidades">Habilidades</a></li>
+            <li><a href="#projetos">Portfólio</a></li>
+            <li><a href="#experiencias">Experiências</a></li>
+            <li><a href="#formacao">Formação</a></li>
+            <li><a href="#contato">Contato</a></li>
+            <li class="mobile-download">
+        <a href="assets/Bruno_Garcia_Curriculo.pdf" download target="_blank">Currículo</a>
+    </li>
     </ul>
-<div class="curriculo-download">
-<a href="assets/Bruno_Garcia_Curriculo.pdf" download target="_blank">Currículo</a>
-</div>
-</nav>
+    <div class="curriculo-download desktop-only">
+        <a href="assets/Bruno_Garcia_Curriculo.pdf" download target="_blank">Currículo</a>
+    </div>
+    </nav>
 
-<!-- Cabeçalho com sua foto -->
-<header>
+    <header>
     <div class="container">
-    <img src="assets/Foto_perfil.jpg" alt="Foto de Bruno Garcia" class="foto-perfil" />
-    <h1>Bruno Garcia</h1>
-    <p>Desenvolvedor RPA | Python | Automação de Processos | Tecnologia da Informação</p>
+        <img src="assets/Foto_perfil.jpg" alt="Foto de Bruno Garcia" class="foto-perfil" />
+        <h1>Bruno Garcia</h1>
+        <p>Desenvolvedor RPA | Python | Automação de Processos | Tecnologia da Informação</p>
     </div>
 </header>
 
-<!-- Seções -->
-<section id="sobre">
+    <section id="sobre">
     <div class="container">
-    <h2>Sobre Mim</h2>
-    <p>
+        <h2>Sobre Mim</h2>
+        <p>
         Me chamo Bruno Garcia, tenho 24 anos e sou formado em Gestão da Tecnologia da Informação pela Unicuritiba.
         Sou apaixonado por tecnologia e automações que otimizam processos e geram valor real para empresas.
         Atuo com foco em automação de processos (RPA), desenvolvimento em Python, integrações com APIs, automatizações com Power Automate
         e construção de sistemas web e banco de dados. Possuo experiência prática em automações voltadas para áreas jurídicas, operacionais
         e administrativas, com uso intensivo de ferramentas como Selenium, Excel avançado, VBA/Macros, PyPDF, DOCX manipulação, geração
         de relatórios dinâmicos e fluxos automatizados de trabalho.
-    </p>
+        </p>
     </div>
 </section>
 
@@ -65,8 +67,8 @@
 
 <section id="projetos">
     <div class="container">
-    <h2>Projetos</h2>
-    <ul>
+        <h2>Projetos</h2>
+        <ul>
         <li><strong>RPA Jurídico:</strong> Geração automática de documentos para defesa com base em PDFs e análise via GPT-4o</li>
         <li><strong>RPA Jurídico:</strong> Robos de alvaras, sucumbencias, guias, controladoria,iniciais e calculos juridicos</li>
         <li><strong>RPA Administrativo:</strong> Controle de inadimplencia para facilitar a parte manual da empresa reduzindo o custo de mão de obra.</li>
@@ -81,8 +83,8 @@
 
 <section id="experiencias">
     <div class="container">
-    <h2>Experiências Profissionais</h2>
-    <ul>
+        <h2>Experiências Profissionais</h2>
+        <ul>
         <li><strong>Desenvolvedor – Estalk Advogados</strong><br><em>Jul/2024 – Atual</em><br>
         Iniciei como auxiliar administrativo na área de cadastramento dos sinistros e depois de 3 meses apresentei algumas ideias para o setor que atuava de algumas automações, e fui direcionado para o setor de desenvolvimento como auxiliar de TI, aonde passei 3 meses auxiliando a equipe e logo depois passei a ser desenvolvedor, hoje sou responsável por desenvolver sistemas, sites e robôs internos para a automação.</li>
         <li><strong>Estagiário de TI – Tribunal de Justiça do Estado do Paraná</strong><br><em>Mai/2023 – Jun/2024</em><br>
@@ -126,11 +128,11 @@
     <p>© 2025 Bruno Garcia. Todos os direitos reservados.</p>
 </footer>
 
-<!-- Script Particles -->
+
 <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 <script>
     particlesJS("particles-js", {
-    particles: {
+        particles: {
         number: { value: 60 },
         color: { value: "#00c3ff" },
         shape: { type: "circle" },
@@ -143,19 +145,20 @@
         opacity: 0.3,
         width: 1
         },
-        move: {
-        enable: true,
-        speed: 2
-        }
-    },
-    interactivity: {
+        move: { enable: true, speed: 2 }
+        },
+        interactivity: {
         detect_on: "canvas",
         events: {
-        onhover: { enable: true, mode: "grab" }
+            onhover: { enable: true, mode: "grab" }
         }
-    },
-    retina_detect: true
+        },
+        retina_detect: true
     });
+
+    function toggleMenu() {
+        document.getElementById("menu").classList.toggle("show");
+    }
 </script>
 </body>
 </html>

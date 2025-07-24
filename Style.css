@@ -1,159 +1,272 @@
-/* Reset */
+/* style.css */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Partículas fixas no fundo */
-#particles-js {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    top: 0;
-    left: 0;
-    background-color: #0f1116;
-    pointer-events: none;
-}
-
-/* Corpo da página */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #0f1116;
-    color: #f4f4f4;
-    line-height: 1.6;
-    scroll-behavior: smooth;
-    overflow-x: hidden;
-    position: relative;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #0f1116;
+  color: #f4f4f4;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  position: relative;
 }
 
-/* Conteúdo sobre partículas */
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  background-color: #0f1116;
+  pointer-events: none;
+}
+
 .container {
-    width: 90%;
-    max-width: 1000px;
-    margin: auto;
-    padding: 40px 20px;
-    position: relative;
-    z-index: 1;
+  width: 90%;
+  max-width: 1000px;
+  margin: auto;
+  padding: 40px 20px;
+  position: relative;
+  z-index: 1;
 }
 
-/* Navbar */
 .navbar {
-    background-color: #1a1c23;
-    padding: 20px 50px; /* Adicionado padding lateral */
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-
-    display: flex;              /* Alinha menu e botão lado a lado */
-    justify-content: space-between;
-    align-items: center;
+  background-color: #1a1c23;
+  padding: 20px 50px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-.navbar .menu {
-    display: flex;
-    gap: 50px;
-    list-style: none;
+.logo {
+  color: white;
+  font-weight: bold;
+  font-size: 1.1rem;
 }
 
-.navbar .menu li a {
-    text-decoration: none;
-    color: #ffffff;
-    font-weight: 600;
-    font-size: 1.0rem;
-    padding: 6px 30px;
-    transition: color 0.3s;
+.menu {
+  display: flex;
+  gap: 50px;
+  list-style: none;
 }
 
-.navbar .menu li a:hover {
-    color: #00c3ff;
+.menu li a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 6px px;
+  transition: color 0.3s;
 }
 
-/* Botão de download do currículo */
+.menu li a:hover {
+  color: #00c3ff;
+}
+
 .curriculo-download a {
-    background-color: #00c3ff;
-    color: #000000;
-    padding: 8px 16px;
-    border-radius: 6px;
-    font-weight: bold;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
+  background-color: #00c3ff;
+  color: #000000;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
 }
 
 .curriculo-download a:hover {
-    background-color: #00a8e0;
-    color: #ffffff;
+  background-color: #00a8e0;
+  color: #ffffff;
 }
 
-/* Header */
 header {
-    text-align: center;
-    margin-bottom: 40px;
+  text-align: center;
+  margin-bottom: 40px;
 }
 
 .foto-perfil {
-    width: 230px;
-    height: 250px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid #00c3ff;
-    margin-bottom: 15px;
+  width: 230px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #00c3ff;
+  margin-bottom: 15px;
 }
 
 h1 {
-    font-size: 2rem;
-    color: #ffffff;
+  font-size: 2rem;
+  color: #ffffff;
 }
 
 header p {
-    color: #cccccc;
-    margin-top: 5px;
+  color: #cccccc;
+  margin-top: 5px;
 }
 
-/* Títulos de seção */
 section h2 {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    color: #00c3ff;
-    border-bottom: 2px solid #00c3ff;
-    display: inline-block;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #00c3ff;
+  border-bottom: 2px solid #00c3ff;
+  display: inline-block;
 }
 
-/* Listas */
 ul {
-    list-style-type: disc;
-    padding-left: 20px;
+  list-style-type: disc;
+  padding-left: 20px;
 }
 
 ul li {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 p, li {
-    font-size: 1rem;
-    color: #dddddd;
+  font-size: 1rem;
+  color: #dddddd;
 }
 
-/* Links */
 a {
-    color: #00c3ff;
-    text-decoration: none;
+  color: #00c3ff;
+  text-decoration: none;
 }
 
 a:hover {
-    text-decoration: none;
+  text-decoration: none;
 }
 
-/* Rodapé */
 footer {
+  text-align: center;
+  padding: 15px;
+  background-color: #1a1c23;
+  color: #888;
+  font-size: 0.9rem;
+  border-top: 1px solid #292c33;
+  position: relative;
+  z-index: 1;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.mobile-download {
+  display: none;
+}
+
+.curriculo-download.desktop-only {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .menu {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+    gap: 10px;
+  }
+
+  .menu.show {
+    display: flex;
+  }
+
+  .menu li a {
+    padding: 10px;
+    font-size: 1rem;
     text-align: center;
-    padding: 15px;
-    background-color: #1a1c23;
-    color: #888;
+  }
+
+  .curriculo-download.desktop-only {
+    display: none;
+  }
+
+  .mobile-download {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .mobile-download a {
+    background-color: #00c3ff;
+    color: #000;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: bold;
+    display: inline-block;
+  }
+
+  .foto-perfil {
+    width: 150px;
+    height: 150px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  section h2 {
+    font-size: 1.4rem;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .container {
+    text-align: center;
+  }
+
+  ul {
+    list-style-position: inside;
+    padding-left: 0;
+    text-align: left;
+    margin: 0 auto;
+    max-width: 90%;
+  }
+
+  section p {
+    text-align: justify;
+    margin: 0 auto;
+    max-width: 95%;
+  }
+
+  p, li {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .foto-perfil {
+    width: 130px;
+    height: 130px;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  section h2 {
+    font-size: 1.2rem;
+  }
+
+  p, li {
     font-size: 0.9rem;
-    border-top: 1px solid #292c33;
-    position: relative;
-    z-index: 1;
+  }
 }
