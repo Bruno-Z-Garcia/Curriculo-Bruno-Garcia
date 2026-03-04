@@ -125,7 +125,7 @@ section h2 {
     padding-bottom: 8px;
     text-shadow: 0 0 6px rgba(0,195,255,0.6);
 
-    overflow: hidden; /* 🔥 impede a linha de sair da área */
+    overflow-x: hidden;
 }
 
 /* linha base */
@@ -155,16 +155,13 @@ section h2::after {
 }
 
 @keyframes linhaGlow {
-    from { left: -30%; }
-    to { left: 100%; }
-}
 
 0% {
-    left: -20%;
+left:-30%;
 }
 
 100% {
-    left: 120%;
+left:100%;
 }
 
 }
