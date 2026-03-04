@@ -338,3 +338,278 @@ p, li {
 }
 
 }
+/* TIMELINE EXPERIÊNCIAS */
+
+.timeline{
+position:relative;
+margin-top:40px;
+padding-left:40px;
+}
+
+.timeline::before{
+content:"";
+position:absolute;
+left:12px;
+top:0;
+width:2px;
+height:100%;
+background:#00c3ff;
+opacity:.3;
+}
+
+.timeline-item{
+position:relative;
+margin-bottom:50px;
+}
+
+.timeline-dot{
+position:absolute;
+left:-1px;
+top:5px;
+width:14px;
+height:14px;
+background:#00c3ff;
+border-radius:50%;
+box-shadow:
+0 0 8px #00c3ff,
+0 0 16px rgba(0,195,255,.6);
+}
+
+.timeline-content{
+padding-left:30px;
+}
+/* ============================= */
+/* PROJETOS EM CARDS */
+/* ============================= */
+
+.projetos-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+gap:25px;
+
+margin-top:40px;
+
+}
+
+.projeto-card{
+
+background:#151821;
+
+border:1px solid rgba(0,195,255,.15);
+
+padding:25px;
+
+border-radius:10px;
+
+transition:.3s;
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.projeto-card:hover{
+
+transform:translateY(-6px);
+
+border-color:#00c3ff;
+
+box-shadow:
+0 0 12px rgba(0,195,255,.2),
+0 0 25px rgba(0,195,255,.15);
+
+}
+
+.projeto-card h3{
+
+color:#00c3ff;
+
+margin-bottom:10px;
+
+}
+
+.projeto-card p{
+
+font-size:.95rem;
+
+color:#ccc;
+
+line-height:1.6;
+
+}
+
+.tech{
+
+margin-top:15px;
+
+display:flex;
+
+flex-wrap:wrap;
+
+gap:8px;
+
+}
+
+.tech span{
+
+background:#0f1116;
+
+border:1px solid rgba(0,195,255,.25);
+
+padding:4px 10px;
+
+border-radius:20px;
+
+font-size:.75rem;
+
+color:#00c3ff;
+
+}
+/* ============================= */
+/* MÉTRICAS */
+/* ============================= */
+
+.metricas-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+
+gap:25px;
+
+margin-top:20px;
+
+}
+
+.metrica{
+
+background:#151821;
+
+border:1px solid rgba(0,195,255,.15);
+
+padding:25px;
+
+border-radius:10px;
+
+text-align:center;
+
+transition:.3s;
+
+}
+
+.metrica:hover{
+
+transform:translateY(-4px);
+
+border-color:#00c3ff;
+
+box-shadow:0 0 10px rgba(0,195,255,.2);
+
+}
+
+.metrica h3{
+
+font-size:2rem;
+
+color:#00c3ff;
+
+margin-bottom:5px;
+
+}
+
+.metrica p{
+
+font-size:.9rem;
+
+color:#ccc;
+
+}
+/* ============================= */
+/* ANIMAÇÃO SCROLL */
+/* ============================= */
+
+.reveal{
+
+opacity:0;
+
+transform:translateY(40px);
+
+transition:all .8s ease;
+
+}
+
+.reveal.visible{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+/* ============================= */
+/* BOTÃO VOLTAR AO TOPO */
+/* ============================= */
+
+#btnTopo{
+
+position:fixed;
+
+bottom:30px;
+
+right:30px;
+
+width:45px;
+
+height:45px;
+
+border:none;
+
+border-radius:50%;
+
+background:#00c3ff;
+
+color:#0f1116;
+
+font-size:20px;
+
+cursor:pointer;
+
+display:none;
+
+align-items:center;
+
+justify-content:center;
+
+box-shadow:
+0 0 10px rgba(0,195,255,.6),
+0 0 20px rgba(0,195,255,.3);
+
+transition:.3s;
+
+z-index:1000;
+
+}
+
+#btnTopo:hover{
+
+transform:translateY(-3px);
+
+box-shadow:
+0 0 12px rgba(0,195,255,.8),
+0 0 25px rgba(0,195,255,.4);
+
+}
+.navbar-scroll{
+
+background: rgba(15,17,22,0.85);
+
+backdrop-filter: blur(10px);
+
+box-shadow: 0 5px 20px rgba(0,0,0,.5);
+
+transition:.3s;
+
+}
