@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     particlesJS("particles-js", {
         particles: {
-            number: { value: 150 },
+            number: { value: 100 },
             color: { value: "#00c3ff" },
             shape: { type: "circle" },
             opacity: { value: 0.3 },
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 opacity: 0.2,
                 width: 1
             },
-            move: { enable: true, speed: 1.2 }
+            move: { enable: true, speed: 0.5 }
         },
         interactivity: {
             detect_on: "canvas",
