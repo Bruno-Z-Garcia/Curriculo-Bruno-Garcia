@@ -165,8 +165,6 @@ story.append(Spacer(1, 8))
 
 story.append(KeepTogether([
     linha_empresa_data("Estalk Advogados — Curitiba/PR", "Jul/2024 – Atual"),
-    Paragraph("Vínculo atual, mantido em paralelo com a Plenna.", nota_st),
-    Spacer(1, 3),
     linha_funcao_data("Desenvolvedor Full Stack &amp; RPA | Pleno", "Fev/2026 – Atual"),
     bullets([
         "Concepção, arquitetura e evolução de sistemas internos completos para a área jurídica, "
@@ -231,7 +229,7 @@ projetos = [
      "Sistema interno para cadastro, monitoramento e gerenciamento de múltiplos robôs e processos "
      "automatizados da empresa.",
      "Python · Dashboards · Automação"),
-    ("Site Imobiliária Miami (em desenvolvimento)",
+    ("Site Imobiliária Miami",
      "Site institucional para imobiliária, com catálogo de imóveis, busca com filtros e design responsivo "
      "focado em experiência do usuário e captação de clientes.",
      "Web · Front-End · Design Responsivo"),
@@ -278,16 +276,16 @@ story.append(KeepTogether([
 # ---------------------------------------------------------------- cursos
 story += secao("Cursos e Certificações")
 cursos_esq = [
-    "DevOps — DankiCode (2026)",
+    "Node.js — DankiCode (2026)",
     "Inteligência Artificial — DankiCode (2026)",
-    "React — DankiCode (2025)",
-    "Programação Front-End — DankiCode (2025)",
+    "DevOps Essential — DankiCode (2026)",
+    "Python Completo — DankiCode (2025)",
 ]
 cursos_dir = [
-    "Python — DankiCode (2025)",
+    "Webmaster Front-End Completo — DankiCode (2025)",
+    "React Native — DankiCode (2025)",
     "Microsoft Azure — Microsoft (2022)",
     "Pacote Office 365 — Educavy (2022)",
-    "",
 ]
 t = Table(
     [[Paragraph(e, bullet_st), Paragraph(d, bullet_st)] for e, d in zip(cursos_esq, cursos_dir)],

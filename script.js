@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!ctx) return false;
 
         const mobile = window.innerWidth < 768;
-        const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+        const dpr = Math.min(window.devicePixelRatio || 1, mobile ? 1 : 1.5);
 
         const CIANO = "0,195,255";
         const DOIS_PI = Math.PI * 2;
@@ -52,8 +52,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const flashes = [];
         const palavras = [];
 
-        const maxPulsos = mobile ? 7 : 16;
-        const maxPalavras = mobile ? 6 : 12;
+        const maxPulsos = mobile ? 6 : 12;
+        const maxPalavras = mobile ? 5 : 10;
 
         let energia = 0;
         let ultimoScroll = window.scrollY;
@@ -61,6 +61,22 @@ document.addEventListener("DOMContentLoaded", function () {
         let antesMs = 0;
 
         const mouse = { x: 0, y: 0 };
+
+        // sprite do halo dos pulsos, desenhado uma única vez
+        // (createRadialGradient a cada quadro era um dos maiores custos)
+        const RAIO_HALO = 10;
+
+        const spriteHalo = (function () {
+            const cv = document.createElement("canvas");
+            cv.width = cv.height = RAIO_HALO * 2;
+            const g = cv.getContext("2d");
+            const grad = g.createRadialGradient(RAIO_HALO, RAIO_HALO, 0, RAIO_HALO, RAIO_HALO, RAIO_HALO);
+            grad.addColorStop(0, "rgba(170,238,255,.95)");
+            grad.addColorStop(1, "rgba(0,195,255,0)");
+            g.fillStyle = grad;
+            g.fillRect(0, 0, RAIO_HALO * 2, RAIO_HALO * 2);
+            return cv;
+        })();
 
         // ---- geração procedural de um traço estilo placa de circuito
 
@@ -219,13 +235,25 @@ document.addEventListener("DOMContentLoaded", function () {
             camadaFundo = desenharCamada(wCamada, hCamada, mobile ? 10 : 20, 0.07);
             camadaFrente = desenharCamada(wCamada, hCamada, mobile ? 14 : 26, 0.13);
 
-            [[divFundo, camadaFundo], [divFrente, camadaFrente], [divGlow, camadaFrente]].forEach(par => {
+            // os canvases entram direto como filhos das divs — converter para
+            // dataURL (base64) travava a página na carga e em cada resize
+            function clonarCanvas(cv) {
+                const copia = document.createElement("canvas");
+                copia.width = cv.width;
+                copia.height = cv.height;
+                copia.getContext("2d").drawImage(cv, 0, 0);
+                return copia;
+            }
+
+            [[divFundo, camadaFundo.cv], [divFrente, camadaFrente.cv], [divGlow, clonarCanvas(camadaFrente.cv)]].forEach(par => {
                 const div = par[0];
-                const camada = par[1];
+                const cv = par[1];
+                cv.style.display = "block";
+                cv.style.width = wCamada + "px";
+                cv.style.height = hCamada + "px";
                 div.style.width = wCamada + "px";
                 div.style.height = hCamada + "px";
-                div.style.backgroundImage = "url(" + camada.cv.toDataURL() + ")";
-                div.style.backgroundSize = wCamada + "px " + hCamada + "px";
+                div.replaceChildren(cv);
             });
 
             pulsos.length = 0;
@@ -239,7 +267,7 @@ document.addEventListener("DOMContentLoaded", function () {
         window.addEventListener("scroll", () => {
             energia = Math.min(energia + Math.abs(window.scrollY - ultimoScroll) * 0.0015, 1.2);
             ultimoScroll = window.scrollY;
-        });
+        }, { passive: true });
 
         if (!reduzirMovimento) {
 
@@ -257,7 +285,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         e.clientY + (Math.random() - 0.5) * 80
                     );
                 }
-            });
+            }, { passive: true });
         }
 
         let aguardandoResize;
@@ -304,15 +332,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     ctx.fill();
                 }
 
-                // cabeça com halo de luz
+                // cabeça com halo de luz (sprite pré-renderizado)
                 const cabeca = pontoNoTraco(p.traco, p.dist);
-                const halo = ctx.createRadialGradient(cabeca.x, cabeca.y, 0, cabeca.x, cabeca.y, 10);
-                halo.addColorStop(0, "rgba(170,238,255,.95)");
-                halo.addColorStop(1, "rgba(0,195,255,0)");
-                ctx.fillStyle = halo;
-                ctx.beginPath();
-                ctx.arc(cabeca.x, cabeca.y, 10, 0, DOIS_PI);
-                ctx.fill();
+                ctx.drawImage(spriteHalo, cabeca.x - RAIO_HALO, cabeca.y - RAIO_HALO);
             }
         }
 
@@ -371,13 +393,15 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
 
+        // o canvas dinâmico roda a ~30 fps; o parallax (só transform, barato
+        // na GPU) continua a cada quadro — corta quase metade do custo
+        const INTERVALO_CANVAS = 1 / 32;
+        let acumuladoCanvas = 0;
+
         function quadro(agoraMs) {
 
             const dt = Math.min((agoraMs - antesMs) / 1000, 0.05);
             antesMs = agoraMs;
-
-            // decai para 25% por segundo, independente da taxa de quadros
-            energia *= Math.pow(0.25, dt);
 
             // parallax: camadas deslizam com o scroll e com o mouse (via GPU)
             const scroll = window.scrollY;
@@ -392,19 +416,33 @@ document.addEventListener("DOMContentLoaded", function () {
             divFrente.style.transform = transformFrente;
             divGlow.style.transform = transformFrente;
 
-            // a placa inteira acende conforme a energia do scroll
-            divGlow.style.opacity = Math.min(energia * 0.45, 0.55).toFixed(3);
+            acumuladoCanvas += dt;
 
-            // canvas dinâmico: apenas pulsos, flashes e palavras
-            ctx.clearRect(0, 0, largura, altura);
+            if (acumuladoCanvas >= INTERVALO_CANVAS) {
 
-            ctx.save();
-            ctx.translate(oxFrente, oyFrente);
-            desenharPulsos(dt);
-            desenharFlashes(dt);
-            ctx.restore();
+                const passo = Math.min(acumuladoCanvas, 0.05);
+                acumuladoCanvas = 0;
 
-            desenharPalavras(dt);
+                // decai para 25% por segundo, independente da taxa de quadros
+                energia *= Math.pow(0.25, passo);
+
+                // a placa inteira acende conforme a energia do scroll;
+                // com brilho ~0 a camada sai da composição (blur é caro)
+                const brilho = Math.min(energia * 0.45, 0.55);
+                divGlow.style.opacity = brilho.toFixed(3);
+                divGlow.style.visibility = brilho < 0.02 ? "hidden" : "visible";
+
+                // canvas dinâmico: apenas pulsos, flashes e palavras
+                ctx.clearRect(0, 0, largura, altura);
+
+                ctx.save();
+                ctx.translate(oxFrente, oyFrente);
+                desenharPulsos(passo);
+                desenharFlashes(passo);
+                ctx.restore();
+
+                desenharPalavras(passo);
+            }
 
             if (!reduzirMovimento) requestAnimationFrame(quadro);
         }
@@ -436,38 +474,14 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // =============================
-    // NAVBAR SCROLL
+    // NAVBAR E BOTÃO VOLTAR AO TOPO
+    // (efeitos de scroll aplicados no manipulador único, mais abaixo)
     // =============================
 
-    window.addEventListener("scroll", () => {
-
-        const navbar = document.querySelector(".navbar");
-
-        if (window.scrollY > 50) {
-            navbar.classList.add("navbar-scroll");
-        } else {
-            navbar.classList.remove("navbar-scroll");
-        }
-
-    });
-
-    // =============================
-    // BOTÃO VOLTAR AO TOPO
-    // =============================
-
+    const navbar = document.querySelector(".navbar");
     const btnTopo = document.getElementById("btnTopo");
 
     if (btnTopo) {
-
-        window.addEventListener("scroll", () => {
-
-            if (window.scrollY > 300) {
-                btnTopo.style.display = "flex";
-            } else {
-                btnTopo.style.display = "none";
-            }
-
-        });
 
         btnTopo.addEventListener("click", () => {
 
@@ -497,11 +511,11 @@ document.addEventListener("DOMContentLoaded", function () {
     // ANIMAÇÃO AO SCROLL
     // =============================
 
-    const reveals = document.querySelectorAll("section, .projeto-card, .timeline-item, .metrica");
+    const reveals = document.querySelectorAll("section, .projeto-card, .timeline-item, .metrica, .cert-card");
 
     // delay escalonado para os cards dentro de grids (efeito cascata)
-    document.querySelectorAll(".metricas-grid, .projetos-grid").forEach(grid => {
-        grid.querySelectorAll(".metrica, .projeto-card").forEach((el, i) => {
+    document.querySelectorAll(".metricas-grid, .projetos-grid, .cert-grid").forEach(grid => {
+        grid.querySelectorAll(".metrica, .projeto-card, .cert-card").forEach((el, i) => {
             el.style.transitionDelay = Math.min(i * 80, 400) + "ms";
         });
     });
@@ -511,8 +525,20 @@ document.addEventListener("DOMContentLoaded", function () {
         entradas.forEach(entrada => {
 
             if (entrada.isIntersecting) {
-                entrada.target.classList.add("visible");
-                observadorReveal.unobserve(entrada.target);
+
+                const el = entrada.target;
+
+                el.classList.add("visible");
+                observadorReveal.unobserve(el);
+
+                // terminado o reveal, zera o delay da cascata e ativa
+                // transições curtas — senão o hover demora a responder
+                const atraso = parseFloat(el.style.transitionDelay) || 0;
+
+                setTimeout(() => {
+                    el.style.transitionDelay = "0ms";
+                    el.classList.add("revelado");
+                }, atraso + 750);
             }
 
         });
@@ -626,7 +652,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // =============================
-    // BARRA DE PROGRESSO, TIMELINE E MENU ATIVO
+    // MANIPULADOR ÚNICO DE SCROLL
+    // (navbar, botão topo, barra de progresso, timeline e menu ativo)
     // =============================
 
     const barraProgresso = document.getElementById("barra-progresso");
@@ -634,27 +661,61 @@ document.addEventListener("DOMContentLoaded", function () {
     const secoes = document.querySelectorAll("section[id]");
     const linksMenu = document.querySelectorAll(".menu li a[href^='#']");
 
+    // medidas em cache: ler offsetTop/scrollHeight a cada scroll força
+    // recálculo de layout e era uma das causas das travadas
+    let alturaRolavel = 0;
+    let topoSecoes = [];
+    let topoTimeline = 0;
+    let alturaTimeline = 0;
+
+    function medirPagina() {
+
+        alturaRolavel = document.documentElement.scrollHeight - window.innerHeight;
+
+        topoSecoes = Array.from(secoes, s => ({ id: s.id, topo: s.offsetTop }));
+
+        if (timeline) {
+
+            // soma offsetTop pela cadeia de offsetParent: ignora os
+            // transforms temporários das animações de reveal
+            let el = timeline;
+            let topo = 0;
+
+            while (el) {
+                topo += el.offsetTop;
+                el = el.offsetParent;
+            }
+
+            topoTimeline = topo;
+            alturaTimeline = timeline.offsetHeight;
+        }
+    }
+
     function atualizarScroll() {
+
+        const y = window.scrollY;
+
+        if (navbar) navbar.classList.toggle("navbar-scroll", y > 50);
+
+        if (btnTopo) btnTopo.style.display = y > 300 ? "flex" : "none";
 
         // barra de progresso no topo da página
         if (barraProgresso) {
-            const total = document.documentElement.scrollHeight - window.innerHeight;
-            barraProgresso.style.width = (total > 0 ? (window.scrollY / total) * 100 : 0) + "%";
+            barraProgresso.style.width = (alturaRolavel > 0 ? (y / alturaRolavel) * 100 : 0) + "%";
         }
 
         // linha da timeline se desenha conforme o scroll
-        if (timeline) {
-            const rect = timeline.getBoundingClientRect();
-            const progresso = (window.innerHeight * 0.8 - rect.top) / rect.height;
+        if (timeline && alturaTimeline > 0) {
+            const progresso = (y + window.innerHeight * 0.8 - topoTimeline) / alturaTimeline;
             timeline.style.setProperty("--progresso", (Math.min(1, Math.max(0, progresso)) * 100) + "%");
         }
 
         // destaca no menu a seção visível
         let secaoAtual = "";
 
-        secoes.forEach(secao => {
-            if (window.scrollY + 150 >= secao.offsetTop) {
-                secaoAtual = secao.id;
+        topoSecoes.forEach(s => {
+            if (y + 150 >= s.topo) {
+                secaoAtual = s.id;
             }
         });
 
@@ -664,8 +725,37 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-    window.addEventListener("scroll", atualizarScroll);
+    // agrupa todo o trabalho de scroll em no máximo 1 execução por quadro
+    let scrollAgendado = false;
 
+    window.addEventListener("scroll", () => {
+
+        if (scrollAgendado) return;
+        scrollAgendado = true;
+
+        requestAnimationFrame(() => {
+            scrollAgendado = false;
+            atualizarScroll();
+        });
+
+    }, { passive: true });
+
+    let aguardandoMedida;
+
+    window.addEventListener("resize", () => {
+        clearTimeout(aguardandoMedida);
+        aguardandoMedida = setTimeout(() => {
+            medirPagina();
+            atualizarScroll();
+        }, 200);
+    });
+
+    window.addEventListener("load", () => {
+        medirPagina();
+        atualizarScroll();
+    });
+
+    medirPagina();
     atualizarScroll();
 
     // =============================
@@ -674,20 +764,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!reduzirMovimento && window.matchMedia("(hover: hover)").matches) {
 
-        document.querySelectorAll(".projeto-card").forEach(card => {
+        document.querySelectorAll(".projeto-card, .cert-card").forEach(card => {
+
+            // mede o card uma vez ao entrar — getBoundingClientRect a cada
+            // mousemove força recálculo de layout
+            let rectCard = null;
+
+            card.addEventListener("mouseenter", () => {
+                rectCard = card.getBoundingClientRect();
+            });
 
             card.addEventListener("mousemove", (e) => {
 
-                const r = card.getBoundingClientRect();
-                const x = (e.clientX - r.left) / r.width - 0.5;
-                const y = (e.clientY - r.top) / r.height - 0.5;
+                if (!rectCard) rectCard = card.getBoundingClientRect();
+
+                const x = (e.clientX - rectCard.left) / rectCard.width - 0.5;
+                const y = (e.clientY - rectCard.top) / rectCard.height - 0.5;
 
                 card.style.transform =
                     "perspective(800px) rotateX(" + (-y * 6).toFixed(2) + "deg) rotateY(" + (x * 6).toFixed(2) + "deg) translateY(-6px)";
 
-            });
+            }, { passive: true });
 
             card.addEventListener("mouseleave", () => {
+                rectCard = null;
                 card.style.transform = "";
             });
 

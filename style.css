@@ -456,7 +456,7 @@ padding:25px;
 
 border-radius:10px;
 
-transition:.3s;
+transition:transform .25s ease,border-color .2s ease,box-shadow .2s ease;
 
 position:relative;
 
@@ -549,7 +549,7 @@ border-radius:10px;
 
 text-align:center;
 
-transition:.3s;
+transition:transform .25s ease,border-color .2s ease,box-shadow .2s ease;
 
 }
 
@@ -754,7 +754,8 @@ animation:flutuar 2s ease-in-out infinite;
 /* ============================= */
 
 html.js .projeto-card,
-html.js .metrica{
+html.js .metrica,
+html.js .cert-card{
 
 opacity:0;
 
@@ -765,7 +766,8 @@ transition:opacity .7s ease,transform .5s ease,border-color .3s,box-shadow .3s;
 }
 
 html.js .projeto-card.visible,
-html.js .metrica.visible{
+html.js .metrica.visible,
+html.js .cert-card.visible{
 
 opacity:1;
 
@@ -773,7 +775,18 @@ transform:translateY(0);
 
 }
 
-html.js .projeto-card.visible:hover{
+/* depois do reveal, transições curtas para o hover responder na hora */
+
+html.js .projeto-card.revelado,
+html.js .metrica.revelado,
+html.js .cert-card.revelado{
+
+transition:transform .22s ease,border-color .18s ease,box-shadow .18s ease;
+
+}
+
+html.js .projeto-card.visible:hover,
+html.js .cert-card.visible:hover{
 
 transform:translateY(-6px);
 
@@ -873,6 +886,7 @@ white-space:nowrap;
 html.js .reveal,
 html.js .projeto-card,
 html.js .metrica,
+html.js .cert-card,
 html.js .timeline-item{
 
 opacity:1 !important;
@@ -888,6 +902,268 @@ transition:none !important;
 section h2::after{
 
 animation:none !important;
+
+}
+
+}
+/* ============================= */
+/* LICENÇAS E CERTIFICADOS */
+/* ============================= */
+
+.cert-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(290px,1fr));
+
+gap:25px;
+
+margin-top:30px;
+
+margin-bottom:10px;
+
+}
+
+.cert-card{
+
+background:#151821;
+
+border:1px solid rgba(0,195,255,.15);
+
+padding:25px;
+
+border-radius:10px;
+
+display:flex;
+
+flex-direction:column;
+
+text-align:left;
+
+transition:transform .25s ease,border-color .2s ease,box-shadow .2s ease;
+
+}
+
+.cert-card:hover{
+
+transform:translateY(-6px);
+
+border-color:#00c3ff;
+
+box-shadow:
+0 0 12px rgba(0,195,255,.2),
+0 0 25px rgba(0,195,255,.15);
+
+}
+
+.cert-card h3{
+
+color:#00c3ff;
+
+font-size:1.05rem;
+
+margin-bottom:6px;
+
+}
+
+.cert-emissor{
+
+font-size:.85rem;
+
+color:#aab4c0;
+
+margin-bottom:4px;
+
+}
+
+.cert-codigo{
+
+font-size:.7rem;
+
+color:#7b8794;
+
+font-family:'Consolas','Courier New',monospace;
+
+word-break:break-all;
+
+}
+
+.cert-card .tech{
+
+margin-top:12px;
+
+}
+
+.cert-botoes{
+
+display:flex;
+
+gap:10px;
+
+flex-wrap:wrap;
+
+margin-top:auto;
+
+padding-top:18px;
+
+}
+
+.btn-cert{
+
+display:inline-flex;
+
+align-items:center;
+
+justify-content:center;
+
+gap:6px;
+
+padding:8px 14px;
+
+border-radius:20px;
+
+font-size:.8rem;
+
+font-weight:600;
+
+transition:background-color .2s ease,color .2s ease,border-color .2s ease,box-shadow .2s ease;
+
+}
+
+.btn-cert-download{
+
+background:#00c3ff;
+
+color:#0f1116;
+
+border:1px solid #00c3ff;
+
+}
+
+.btn-cert-download:hover{
+
+background:#00a8e0;
+
+box-shadow:0 0 12px rgba(0,195,255,.5);
+
+}
+
+.btn-cert-validar{
+
+background:transparent;
+
+border:1px solid rgba(0,195,255,.5);
+
+color:#00c3ff;
+
+}
+
+.btn-cert-validar:hover{
+
+background:rgba(0,195,255,.12);
+
+border-color:#00c3ff;
+
+box-shadow:0 0 10px rgba(0,195,255,.3);
+
+}
+
+/* ============================= */
+/* AJUSTES RESPONSIVOS EXTRAS */
+/* ============================= */
+
+@media (max-width: 768px){
+
+/* desfocar o fundo animado é muito caro em celulares e causava engasgos;
+   um painel mais opaco mantém a leitura sem o custo do blur */
+
+section .container{
+
+backdrop-filter:none;
+
+-webkit-backdrop-filter:none;
+
+background:rgba(13,17,25,.88);
+
+}
+
+.navbar{
+
+padding:15px 20px;
+
+}
+
+.cert-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.btn-cert{
+
+flex:1;
+
+}
+
+.timeline{
+
+padding-left:28px;
+
+}
+
+.timeline-content{
+
+padding-left:15px;
+
+}
+
+.metricas-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+gap:15px;
+
+}
+
+.metrica{
+
+padding:18px 12px;
+
+}
+
+.metrica h3{
+
+font-size:1.6rem;
+
+}
+
+}
+
+@media (max-width: 480px){
+
+.projetos-grid,
+.cert-grid{
+
+gap:18px;
+
+}
+
+.projeto-card,
+.cert-card{
+
+padding:20px 16px;
+
+}
+
+.cert-botoes{
+
+flex-direction:column;
+
+}
+
+.btn-cert{
+
+width:100%;
 
 }
 
