@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #0f1116;
+    background: #0a0e14 radial-gradient(ellipse at 50% -10%, #122440 0%, #0a0e14 60%) fixed;
     color: #f4f4f4;
     line-height: 1.6;
     scroll-behavior: smooth;
@@ -14,15 +14,51 @@ body {
     position: relative;
 }
 
-#particles-js {
+/* camadas estáticas do circuito, movidas por CSS transform (GPU) */
+.circuito-camada {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-repeat: no-repeat;
+    will-change: transform, opacity;
+}
+
+/* cópia da camada frontal que acende conforme a energia do scroll */
+#circuito-glow {
+    filter: blur(3px) brightness(1.6);
+    mix-blend-mode: screen;
+    opacity: 0;
+}
+
+/* canvas só com os efeitos dinâmicos: pulsos, flashes e palavras */
+#bg-canvas {
     position: fixed;
     width: 100%;
     height: 100%;
     z-index: 0;
     top: 0;
     left: 0;
-    background-color: #0f1116;
+    background: transparent;
     pointer-events: none;
+}
+
+/* textura cinematográfica por cima do fundo: scanlines + vinheta */
+#bg-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+        repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0 1px, transparent 1px 3px),
+        radial-gradient(ellipse at center, transparent 40%, rgba(2, 4, 8, 0.6) 100%);
+}
+
+/* fallback: sem canvas, fica o gradiente do body */
+body.fundo-fallback #bg-canvas,
+body.fundo-fallback .circuito-camada {
+    display: none;
 }
 
 .container {
@@ -32,6 +68,20 @@ body {
     padding: 40px 20px;
     position: relative;
     z-index: 1;
+}
+
+/* painéis de vidro sobre o fundo 3D (somente seções de conteúdo) */
+section .container {
+    background: rgba(13, 17, 25, 0.55);
+    border: 1px solid rgba(0, 195, 255, 0.1);
+    border-radius: 18px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.45),
+        inset 0 0 50px rgba(0, 195, 255, 0.03);
+    margin: 30px auto;
+    padding: 50px 40px;
 }
 
 .navbar {
@@ -284,6 +334,11 @@ section h2 {
     text-align: center;
 }
 
+section .container {
+    padding: 35px 18px;
+    border-radius: 14px;
+}
+
 ul {
     list-style-position: inside;
     padding-left: 0;
@@ -529,7 +584,7 @@ color:#ccc;
 /* ANIMAÇÃO SCROLL */
 /* ============================= */
 
-.reveal{
+html.js .reveal{
 
 opacity:0;
 
@@ -539,7 +594,7 @@ transition:all .8s ease;
 
 }
 
-.reveal.visible{
+html.js .reveal.visible{
 
 opacity:1;
 
@@ -608,5 +663,232 @@ backdrop-filter: blur(10px);
 box-shadow: 0 5px 20px rgba(0,0,0,.5);
 
 transition:.3s;
+
+}
+/* ============================= */
+/* BARRA DE PROGRESSO DE SCROLL */
+/* ============================= */
+
+#barra-progresso{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+height:3px;
+
+width:0;
+
+background:linear-gradient(90deg,#00c3ff,#0066ff);
+
+box-shadow:0 0 10px rgba(0,195,255,.8);
+
+z-index:2000;
+
+}
+/* ============================= */
+/* TYPEWRITER DO HEADER */
+/* ============================= */
+
+.subtitulo{
+
+color:#cccccc;
+
+margin-top:5px;
+
+font-size:1.1rem;
+
+}
+
+.typewriter-linha{
+
+color:#00c3ff;
+
+font-size:1.05rem;
+
+min-height:1.7em;
+
+margin-top:6px;
+
+letter-spacing:.5px;
+
+}
+
+.cursor{
+
+animation:piscar 1s steps(1) infinite;
+
+}
+
+@keyframes piscar{
+
+50%{opacity:0;}
+
+}
+
+.scroll-indicador{
+
+display:inline-block;
+
+margin-top:25px;
+
+font-size:1.5rem;
+
+color:#00c3ff;
+
+animation:flutuar 2s ease-in-out infinite;
+
+}
+
+@keyframes flutuar{
+
+0%,100%{transform:translateY(0);}
+
+50%{transform:translateY(8px);}
+
+}
+/* ============================= */
+/* REVEAL DE CARDS E TIMELINE */
+/* ============================= */
+
+html.js .projeto-card,
+html.js .metrica{
+
+opacity:0;
+
+transform:translateY(40px);
+
+transition:opacity .7s ease,transform .5s ease,border-color .3s,box-shadow .3s;
+
+}
+
+html.js .projeto-card.visible,
+html.js .metrica.visible{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+html.js .projeto-card.visible:hover{
+
+transform:translateY(-6px);
+
+}
+
+html.js .metrica.visible:hover{
+
+transform:translateY(-4px);
+
+}
+
+html.js .timeline-item{
+
+opacity:0;
+
+transform:translateX(-30px);
+
+transition:opacity .7s ease,transform .7s ease;
+
+}
+
+html.js .timeline-item.visible{
+
+opacity:1;
+
+transform:translateX(0);
+
+}
+
+/* linha da timeline que se desenha conforme o scroll */
+
+.timeline::after{
+
+content:"";
+
+position:absolute;
+
+left:12px;
+
+top:0;
+
+width:2px;
+
+height:var(--progresso,0%);
+
+background:#00c3ff;
+
+box-shadow:0 0 8px rgba(0,195,255,.6);
+
+}
+/* ============================= */
+/* LINK ATIVO NO MENU */
+/* ============================= */
+
+.menu li a.ativo{
+
+color:#00c3ff;
+
+text-shadow:0 0 8px rgba(0,195,255,.5);
+
+}
+/* ============================= */
+/* BADGE DE STATUS DE PROJETO */
+/* ============================= */
+
+.badge-status{
+
+display:inline-block;
+
+margin-left:8px;
+
+padding:2px 10px;
+
+border-radius:20px;
+
+font-size:.65rem;
+
+background:rgba(0,195,255,.12);
+
+border:1px solid rgba(0,195,255,.4);
+
+color:#00c3ff;
+
+vertical-align:middle;
+
+letter-spacing:.5px;
+
+white-space:nowrap;
+
+}
+/* ============================= */
+/* ACESSIBILIDADE: MENOS MOVIMENTO */
+/* ============================= */
+
+@media (prefers-reduced-motion: reduce){
+
+html.js .reveal,
+html.js .projeto-card,
+html.js .metrica,
+html.js .timeline-item{
+
+opacity:1 !important;
+
+transform:none !important;
+
+transition:none !important;
+
+}
+
+.scroll-indicador,
+.cursor,
+section h2::after{
+
+animation:none !important;
+
+}
 
 }

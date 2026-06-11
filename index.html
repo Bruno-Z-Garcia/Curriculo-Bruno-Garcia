@@ -7,10 +7,16 @@
     <title>Bruno Garcia | Currículo Online</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="style.css" />
-    
+    <script>document.documentElement.classList.add("js");</script>
+
 </head>
 <body>
-    <div id="particles-js"></div>
+    <div id="circuito-fundo" class="circuito-camada"></div>
+    <div id="circuito-frente" class="circuito-camada"></div>
+    <div id="circuito-glow" class="circuito-camada"></div>
+    <canvas id="bg-canvas"></canvas>
+    <div id="bg-overlay"></div>
+    <div id="barra-progresso"></div>
     <nav class="navbar">
     <div class="logo">Bruno Garcia</div>
     <button class="menu-toggle" onclick="toggleMenu()">☰</button>
@@ -33,7 +39,9 @@
     <div class="container">
         <img src="assets/Foto_perfil.jpg" alt="Foto de Bruno Garcia" class="foto-perfil" />
         <h1>Bruno Garcia</h1>
-        <p>Desenvolvedor de Software | Python | Java | React | TypeScript | JavaScript | RPA | Backend (Flask, APIs, MySQL)</p>
+        <p class="subtitulo">Desenvolvedor Full Stack &amp; RPA</p>
+        <p class="typewriter-linha"><span id="typewriter"></span><span class="cursor">|</span></p>
+        <a href="#metricas" class="scroll-indicador" aria-label="Rolar para a próxima seção">↓</a>
     </div>
 </header>
 <section id="metricas">
@@ -42,22 +50,22 @@
 <div class="metricas-grid">
 
 <div class="metrica">
-<h3>+4</h3>
+<h3 class="contador" data-valor="4" data-prefixo="+">+4</h3>
 <p>Anos de experiência</p>
 </div>
 
 <div class="metrica">
-<h3>+30</h3>
+<h3 class="contador" data-valor="30" data-prefixo="+">+30</h3>
 <p>Automações desenvolvidas</p>
 </div>
 
 <div class="metrica">
-<h3>+5</h3>
+<h3 class="contador" data-valor="5" data-prefixo="+">+5</h3>
 <p>Sistemas completos</p>
 </div>
 
 <div class="metrica">
-<h3>+20k</h3>
+<h3 class="contador" data-valor="20" data-prefixo="+" data-sufixo="k">+20k</h3>
 <p>Linhas de código</p>
 </div>
 
@@ -112,8 +120,8 @@
   <div class="container">
     <h2>Habilidades Técnicas</h2>
     <ul>
-      <li>Linguagens: Python, JavaScript, C#, SQL</li>
-      <li>Frameworks e Tecnologias: Flask, React, Angular</li>
+      <li>Linguagens: Python, JavaScript, TypeScript, Java, C#, SQL</li>
+      <li>Frameworks e Tecnologias: Flask, Node.js, React, Angular</li>
       <li>Automação de Processos (RPA) e Web Scraping</li>
       <li>Ferramentas de automação: Selenium, Playwright, Power Automate Desktop</li>
       <li>Integração com APIs REST (OpenAI, sistemas corporativos)</li>
@@ -244,6 +252,20 @@ Plataforma web para gestão financeira e cálculo de distribuição de lucros en
 <span>Python</span>
 <span>Financeiro</span>
 <span>Dashboard</span>
+</div>
+</div>
+
+
+<div class="projeto-card">
+<h3>Site Imobiliária Miami <span class="badge-status">Em desenvolvimento</span></h3>
+<p>
+Site institucional para a imobiliária Miami, com catálogo de imóveis, busca com filtros e design responsivo focado em experiência do usuário e captação de clientes.
+</p>
+
+<div class="tech">
+<span>Web</span>
+<span>Front-End</span>
+<span>Design Responsivo</span>
 </div>
 </div>
 
@@ -469,7 +491,6 @@ Atuei com suporte técnico, infraestrutura de TI e apoio ao desenvolvimento de s
 
 <button id="btnTopo">↑</button>
 
-<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
