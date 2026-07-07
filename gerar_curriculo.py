@@ -119,7 +119,7 @@ story = []
 
 # ---------------------------------------------------------------- cabeçalho
 story.append(Paragraph("Bruno Garcia", nome_st))
-story.append(Paragraph("Desenvolvedor Full Stack &amp; RPA | Pleno", cargo_st))
+story.append(Paragraph("Desenvolvedor RPA | Pleno", cargo_st))
 story.append(Paragraph(
     "Curitiba/PR &nbsp;·&nbsp; (41) 99847-6818 &nbsp;·&nbsp; "
     '<a href="mailto:bg5306453@gmail.com" color="#1f5fa8">bg5306453@gmail.com</a>',
@@ -135,14 +135,14 @@ story.append(Paragraph(
 # ---------------------------------------------------------------- resumo
 story += secao("Resumo Profissional")
 story.append(Paragraph(
-    "Desenvolvedor Full Stack e especialista em automação de processos (RPA), com mais de 4 anos de experiência "
-    "em tecnologia e formação em Gestão da Tecnologia da Informação (UniCuritiba). Atuação ponta a ponta no "
-    "desenvolvimento de sistemas web corporativos — do levantamento de requisitos e modelagem de dados ao deploy "
-    "e sustentação em produção — com Python (Flask), MySQL e JavaScript. Experiência em automações com Selenium, "
-    "Playwright e Power Automate, integração com Inteligência Artificial (API OpenAI) para geração automática de "
-    "documentos, dashboards gerenciais e gestão de ambientes em cloud (Microsoft Azure). Histórico de soluções que "
-    "automatizam fluxos operacionais complexos, reduzem retrabalho manual e centralizam informações estratégicas "
-    "para tomada de decisão.",
+    "Desenvolvedor RPA com mais de 4 anos de experiência em tecnologia e formação em Gestão da Tecnologia da "
+    "Informação (UniCuritiba). Especializado em automação de processos com Python, C#, Selenium, Playwright e "
+    "Power Automate Desktop, atuando em todo o ciclo das soluções — do levantamento de requisitos e arquitetura "
+    "à implantação e sustentação em produção. Experiência em integrações entre sistemas via APIs REST, automação "
+    "da geração e do processamento de documentos (PDF e Word), extração e tratamento de dados, dashboards e "
+    "indicadores gerenciais, aplicação de Inteligência Artificial (API OpenAI) em processos corporativos e bancos "
+    "de dados relacionais (MySQL e SQL Server). Histórico de robôs e sistemas que reduzem atividades manuais, "
+    "aumentam a produtividade e garantem maior confiabilidade nas operações.",
     corpo_st,
 ))
 
@@ -151,41 +151,43 @@ story += secao("Experiência Profissional")
 
 story.append(KeepTogether([
     linha_empresa_data("Plenna Comércio Exterior — Curitiba/PR", "Abr/2026 – Atual"),
-    linha_funcao_data("Desenvolvedor Full Stack, RPA &amp; Sistemas (DevOps &amp; Cloud) | Pleno", ""),
+    linha_funcao_data("Desenvolvedor RPA | Pleno", ""),
     bullets([
-        "Desenvolvimento de automações (RPA) para otimização de processos operacionais e administrativos.",
+        "Desenvolvimento de robôs de automação (RPA) com Python, C#, Playwright e Selenium para processos "
+        "de comércio exterior e rotinas administrativas.",
+        "Automação da geração e do processamento de documentos, extração e tratamento de dados.",
         "Criação e manutenção de sistemas internos, aplicações web e sites.",
-        "Gerenciamento de servidores, deploy e publicação de aplicações em ambiente produtivo.",
-        "Migração de sistemas, dados e serviços entre ambientes.",
-        "Gestão de ambientes em cloud (Microsoft Azure e ecossistema Microsoft).",
-        "Integração com APIs e serviços externos.",
+        "Integração entre sistemas por meio de APIs e serviços externos.",
+        "Deploy, publicação e sustentação de robôs e aplicações em ambiente produtivo.",
+        "Gerenciamento de servidores, migração de sistemas e dados e gestão de cloud (Microsoft Azure).",
     ]),
 ]))
 story.append(Spacer(1, 8))
 
 story.append(KeepTogether([
     linha_empresa_data("Estalk Advogados — Curitiba/PR", "Jul/2024 – Atual"),
-    linha_funcao_data("Desenvolvedor Full Stack &amp; RPA | Pleno", "Fev/2026 – Atual"),
+    linha_funcao_data("Desenvolvedor RPA | Pleno", "Fev/2026 – Atual"),
     bullets([
-        "Concepção, arquitetura e evolução de sistemas internos completos para a área jurídica, "
-        "cobrindo backend, frontend, modelagem de dados e regras de negócio.",
-        "Criação de dashboards gerenciais com KPIs dinâmicos e filtros avançados.",
-        "Implementação de regras automatizadas de status, prazos e validações críticas.",
-        "Integração com sistemas jurídicos (CPJ, XJUS e Preâmbulo).",
-        "Desenvolvimento de geradores automáticos de documentos com IA (API OpenAI).",
-        "Otimização de consultas SQL com foco em performance de banco de dados.",
-        "Deploy, monitoramento e manutenção de aplicações em ambiente produtivo.",
+        "Desenvolvimento de robôs e aplicações com Python, C#, Power Automate Desktop, Selenium, Playwright "
+        "e Inteligência Artificial, automatizando processos jurídicos e administrativos.",
+        "Responsável por todo o ciclo das soluções — do levantamento de requisitos e arquitetura à "
+        "implantação e manutenção em produção.",
+        "Integração entre sistemas por meio de APIs, incluindo sistemas jurídicos (CPJ, XJUS e Preâmbulo).",
+        "Automação da geração e do processamento de documentos (PDF e Word) e extração e tratamento de dados.",
+        "Desenvolvimento de aplicações web com Python (Flask), APIs REST e bancos de dados relacionais.",
+        "Dashboards e indicadores (KPIs), modelagem e otimização de bancos de dados.",
+        "Aplicação de Inteligência Artificial (API OpenAI) em processos corporativos.",
     ]),
 ]))
 story.append(Spacer(1, 5))
 story.append(KeepTogether([
-    linha_funcao_data("Desenvolvedor Full Stack &amp; RPA | Júnior", "Jul/2024 – Fev/2026"),
+    linha_funcao_data("Desenvolvedor RPA | Júnior", "Jul/2024 – Fev/2026"),
     bullets([
-        "Desenvolvimento de funcionalidades backend com Python e Flask.",
-        "Criação e manutenção de interfaces web com HTML, CSS e JavaScript.",
-        "Modelagem e consultas em banco de dados MySQL.",
-        "Automações com Python, Selenium e Power Automate, com redução de custos operacionais.",
-        "Integrações com APIs externas e geração automática de documentos em PDF e Word.",
+        "Criação de robôs com Python, Selenium e Power Automate: automações web, geração automática de "
+        "documentos, tratamento de dados e integração de informações entre plataformas.",
+        "Desenvolvimento backend com Python (Flask), interfaces web e modelagem de banco de dados MySQL.",
+        "Integrações entre sistemas por meio de APIs.",
+        "Atuação em todas as etapas: análise da necessidade, implementação, testes e manutenção.",
     ]),
 ]))
 story.append(Spacer(1, 8))
@@ -213,26 +215,26 @@ story.append(KeepTogether([
 story += secao("Projetos em Destaque")
 
 projetos = [
-    ("Sistema de Análises Jurídicas",
-     "Plataforma web corporativa para gestão completa de análises jurídicas, com múltiplos níveis de usuários "
-     "(advogados, supervisores e diretoria), geração automática de documentos e dashboards analíticos.",
-     "Python · Flask · JavaScript · MySQL"),
+    ("Automação Jurídica (RPA)",
+     "Robôs para automação de tarefas jurídicas: emissão de alvarás, geração de guias, cálculos judiciais, "
+     "petições iniciais e rotinas da controladoria.",
+     "Python · Selenium · Playwright · RPA"),
+    ("Robôs de Integração de Sistemas",
+     "Automações responsáveis pela recepção de sinistros, importação e exportação de dados entre sistemas "
+     "corporativos e processamento automatizado de informações.",
+     "Python · C# · APIs REST"),
+    ("Plataforma de Gestão de Automações",
+     "Sistema interno para cadastro, monitoramento e gerenciamento de múltiplos robôs e processos "
+     "automatizados da empresa.",
+     "Python · RPA · Dashboards"),
     ("Gerador Inteligente de Documentos Jurídicos",
      "Sistema que analisa documentos processuais (PDF e DOCX) e gera peças jurídicas automaticamente "
      "com integração de IA.",
      "Python · Flask · OpenAI"),
-    ("Automação Jurídica (RPA)",
-     "Robôs para automação de tarefas jurídicas: emissão de alvarás, geração de guias, cálculos judiciais, "
-     "petições iniciais e rotinas da controladoria.",
-     "Python · Selenium · RPA"),
-    ("Plataforma de Gestão de Automações",
-     "Sistema interno para cadastro, monitoramento e gerenciamento de múltiplos robôs e processos "
-     "automatizados da empresa.",
-     "Python · Dashboards · Automação"),
-    ("Site Imobiliária Miami",
-     "Site institucional para imobiliária, com catálogo de imóveis, busca com filtros e design responsivo "
-     "focado em experiência do usuário e captação de clientes.",
-     "Web · Front-End · Design Responsivo"),
+    ("Sistema de Análises Jurídicas",
+     "Plataforma web corporativa para gestão completa de análises jurídicas, com múltiplos níveis de usuários "
+     "(advogados, supervisores e diretoria), geração automática de documentos e dashboards analíticos.",
+     "Python · Flask · JavaScript · MySQL"),
 ]
 for titulo, desc, tech in projetos:
     story.append(KeepTogether([
@@ -246,13 +248,14 @@ for titulo, desc, tech in projetos:
 story += secao("Habilidades Técnicas")
 
 habilidades = [
-    ("Linguagens", "Python, JavaScript, TypeScript, Java, C#, SQL"),
-    ("Desenvolvimento Web", "Flask, Node.js, React, Angular, HTML, CSS, Bootstrap"),
-    ("Automação &amp; RPA", "Selenium, Playwright, Power Automate, Web Scraping"),
-    ("Inteligência Artificial", "Integração com APIs de IA (OpenAI) aplicada a automações e geração de documentos"),
-    ("Bancos de Dados", "MySQL e SQLite — modelagem e otimização de consultas"),
-    ("DevOps &amp; Cloud", "Git, GitHub, deploy de aplicações, Microsoft Azure"),
+    ("Automação &amp; RPA", "Selenium, Playwright, Power Automate Desktop, Web Scraping, orquestração de robôs"),
+    ("Linguagens", "Python, C#, SQL, JavaScript, TypeScript, Java, VBA"),
+    ("Backend &amp; APIs", "Flask, Node.js, APIs REST, integrações entre sistemas corporativos"),
+    ("Inteligência Artificial", "Integração com APIs de IA (OpenAI) aplicada a automações e processos corporativos"),
+    ("Bancos de Dados", "MySQL, SQL Server e SQLite — modelagem e otimização de consultas"),
     ("Dados &amp; Documentos", "Power BI, Excel avançado (VBA), geração de PDF, Word e Excel com Python"),
+    ("Desenvolvimento Web", "HTML, CSS, Bootstrap, React, Angular"),
+    ("DevOps &amp; Cloud", "Git, GitHub, deploy de aplicações, Microsoft Azure"),
 ]
 t = Table(
     [[Paragraph(cat, hab_cat_st), Paragraph(desc, bullet_st)] for cat, desc in habilidades],
@@ -321,7 +324,7 @@ doc = SimpleDocTemplate(
     bottomMargin=1.4 * cm,
     title="Currículo — Bruno Garcia",
     author="Bruno Garcia",
-    subject="Desenvolvedor Full Stack & RPA",
+    subject="Desenvolvedor RPA",
 )
 doc.build(story)
 print(f"PDF gerado: {SAIDA}")

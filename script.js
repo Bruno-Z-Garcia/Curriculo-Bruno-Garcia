@@ -39,10 +39,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const PASSO_ANGULO = Math.PI / 4;
 
         const PALAVRAS_TECH = [
-            "Python", "Flask", "Node.js", "TypeScript", "JavaScript", "Java",
-            "C#", "SQL", "React", "Angular", "MySQL", "RPA", "API REST",
-            "Azure", "DevOps", "IA", "</>", "{ }", "git push", "deploy",
-            "async/await", "SELECT *", "localhost", "automação"
+            "RPA", "Python", "C#", "Playwright", "Selenium", "Power Automate",
+            "Flask", "API REST", "MySQL", "SQL Server", "OpenAI", "Azure",
+            "bot.run()", "page.click()", "web scraping", "automação", "robôs",
+            "IA", "</>", "{ }", "git push", "deploy", "async/await", "SELECT *"
         ];
 
         let largura, altura, extra;
@@ -604,12 +604,12 @@ document.addEventListener("DOMContentLoaded", function () {
     if (typewriter) {
 
         const frases = [
-            "Python · Flask · MySQL",
-            "Node.js · TypeScript · JavaScript",
-            "Java · C# · SQL",
-            "React · Angular · Bootstrap",
-            "RPA · Selenium · Power Automate",
+            "RPA · Automação de Processos",
+            "Playwright · Selenium · Power Automate",
+            "Python · C# · Flask",
+            "APIs REST · Integrações de Sistemas",
             "IA aplicada · API OpenAI",
+            "MySQL · SQL Server",
             "DevOps · Microsoft Azure"
         ];
 
@@ -801,15 +801,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function calcularDuracao(inicio, fim = null) {
 
-        const start = new Date(inicio + "-01");
-        const end = fim ? new Date(fim + "-01") : new Date();
+        // parse manual (ano, mês) — "AAAA-MM-01" no new Date() é lido em UTC
+        // e no fuso do Brasil voltava um dia, caindo no mês anterior
+        function mesLocal(valor) {
+            const partes = valor.split("-");
+            return new Date(Number(partes[0]), Number(partes[1]) - 1, 1);
+        }
 
+        const start = mesLocal(inicio);
+        const end = fim ? mesLocal(fim) : new Date();
+
+        // contagem inclusiva do mês corrente, seguindo o padrão do LinkedIn
         let anos = end.getFullYear() - start.getFullYear();
-        let meses = end.getMonth() - start.getMonth();
+        let meses = end.getMonth() - start.getMonth() + 1;
 
         if (meses < 0) {
             anos--;
             meses += 12;
+        }
+
+        if (meses >= 12) {
+            anos++;
+            meses -= 12;
         }
 
         let resultado = "";

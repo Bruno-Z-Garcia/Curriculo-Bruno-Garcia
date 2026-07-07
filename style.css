@@ -1139,6 +1139,36 @@ font-size:1.6rem;
 
 }
 
+/* ============================= */
+/* HABILIDADES EM CATEGORIAS */
+/* ============================= */
+
+.habilidades-grid{
+
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+margin-top:30px;
+
+}
+
+.habilidades-grid .projeto-card p{
+
+font-size:.85rem;
+
+color:#aab4c0;
+
+}
+
+.idiomas-nota{
+
+margin-top:25px;
+
+color:#aab4c0;
+
+text-align:center;
+
+}
+
 @media (max-width: 480px){
 
 .projetos-grid,
