@@ -728,6 +728,58 @@ animation:piscar 1s steps(1) infinite;
 
 }
 
+/* ícones sociais do header */
+
+.social-links{
+
+display:flex;
+
+justify-content:center;
+
+gap:14px;
+
+margin-top:18px;
+
+}
+
+.social-links a{
+
+display:inline-flex;
+
+align-items:center;
+
+justify-content:center;
+
+width:42px;
+
+height:42px;
+
+border-radius:50%;
+
+color:#00c3ff;
+
+background:rgba(0,195,255,.08);
+
+border:1px solid rgba(0,195,255,.3);
+
+transition:transform .2s ease,background-color .2s ease,box-shadow .2s ease,color .2s ease;
+
+}
+
+.social-links a:hover{
+
+transform:translateY(-3px);
+
+background:#00c3ff;
+
+color:#0f1116;
+
+box-shadow:
+0 0 12px rgba(0,195,255,.6),
+0 0 25px rgba(0,195,255,.3);
+
+}
+
 .scroll-indicador{
 
 display:inline-block;
@@ -755,7 +807,8 @@ animation:flutuar 2s ease-in-out infinite;
 
 html.js .projeto-card,
 html.js .metrica,
-html.js .cert-card{
+html.js .cert-card,
+html.js .contato-card{
 
 opacity:0;
 
@@ -767,7 +820,8 @@ transition:opacity .7s ease,transform .5s ease,border-color .3s,box-shadow .3s;
 
 html.js .projeto-card.visible,
 html.js .metrica.visible,
-html.js .cert-card.visible{
+html.js .cert-card.visible,
+html.js .contato-card.visible{
 
 opacity:1;
 
@@ -779,14 +833,16 @@ transform:translateY(0);
 
 html.js .projeto-card.revelado,
 html.js .metrica.revelado,
-html.js .cert-card.revelado{
+html.js .cert-card.revelado,
+html.js .contato-card.revelado{
 
 transition:transform .22s ease,border-color .18s ease,box-shadow .18s ease;
 
 }
 
 html.js .projeto-card.visible:hover,
-html.js .cert-card.visible:hover{
+html.js .cert-card.visible:hover,
+html.js .contato-card.visible:hover{
 
 transform:translateY(-6px);
 
@@ -887,6 +943,7 @@ html.js .reveal,
 html.js .projeto-card,
 html.js .metrica,
 html.js .cert-card,
+html.js .contato-card,
 html.js .timeline-item{
 
 opacity:1 !important;
@@ -1069,6 +1126,98 @@ box-shadow:0 0 10px rgba(0,195,255,.3);
 }
 
 /* ============================= */
+/* CONTATO EM CARDS */
+/* ============================= */
+
+.contato-chamada{
+
+color:#aab4c0;
+
+margin-bottom:10px;
+
+}
+
+.contato-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+
+gap:25px;
+
+margin-top:30px;
+
+}
+
+.contato-card{
+
+background:#151821;
+
+border:1px solid rgba(0,195,255,.15);
+
+padding:28px 20px;
+
+border-radius:10px;
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+text-align:center;
+
+gap:6px;
+
+color:#00c3ff;
+
+transition:transform .25s ease,border-color .2s ease,box-shadow .2s ease;
+
+}
+
+.contato-card:hover{
+
+transform:translateY(-6px);
+
+border-color:#00c3ff;
+
+box-shadow:
+0 0 12px rgba(0,195,255,.2),
+0 0 25px rgba(0,195,255,.15);
+
+}
+
+.contato-card h3{
+
+color:#ffffff;
+
+font-size:1rem;
+
+margin-top:6px;
+
+}
+
+.contato-card p{
+
+font-size:.85rem;
+
+color:#aab4c0;
+
+word-break:break-all;
+
+}
+
+.contato-nota{
+
+margin-top:25px;
+
+color:#aab4c0;
+
+text-align:center;
+
+}
+
+/* ============================= */
 /* AJUSTES RESPONSIVOS EXTRAS */
 /* ============================= */
 
@@ -1134,6 +1283,16 @@ padding:18px 12px;
 .metrica h3{
 
 font-size:1.6rem;
+
+}
+
+/* textos curtos de cards não devem herdar o justify do mobile */
+
+.metrica p,
+.contato-card p,
+.contato-chamada{
+
+text-align:center;
 
 }
 

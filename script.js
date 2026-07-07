@@ -461,7 +461,12 @@ document.addEventListener("DOMContentLoaded", function () {
     // =============================
 
     window.toggleMenu = function () {
-        document.getElementById("menu").classList.toggle("show");
+        const aberto = document.getElementById("menu").classList.toggle("show");
+        const botao = document.querySelector(".menu-toggle");
+        if (botao) {
+            botao.setAttribute("aria-expanded", aberto);
+            botao.setAttribute("aria-label", aberto ? "Fechar menu" : "Abrir menu");
+        }
     };
 
     document.querySelectorAll('.menu li a').forEach(link => {
@@ -500,22 +505,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
     history.scrollRestoration = "manual";
 
+    // só força o topo quando não há âncora na URL — assim links diretos
+    // como site/#projetos continuam levando à seção certa
     window.onload = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: "instant"
-        });
+        if (!location.hash) {
+            window.scrollTo({
+                top: 0,
+                behavior: "instant"
+            });
+        }
     };
 
     // =============================
     // ANIMAÇÃO AO SCROLL
     // =============================
 
-    const reveals = document.querySelectorAll("section, .projeto-card, .timeline-item, .metrica, .cert-card");
+    const reveals = document.querySelectorAll("section, .projeto-card, .timeline-item, .metrica, .cert-card, .contato-card");
 
     // delay escalonado para os cards dentro de grids (efeito cascata)
-    document.querySelectorAll(".metricas-grid, .projetos-grid, .cert-grid").forEach(grid => {
-        grid.querySelectorAll(".metrica, .projeto-card, .cert-card").forEach((el, i) => {
+    document.querySelectorAll(".metricas-grid, .projetos-grid, .cert-grid, .contato-grid").forEach(grid => {
+        grid.querySelectorAll(".metrica, .projeto-card, .cert-card, .contato-card").forEach((el, i) => {
             el.style.transitionDelay = Math.min(i * 80, 400) + "ms";
         });
     });
@@ -764,7 +773,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!reduzirMovimento && window.matchMedia("(hover: hover)").matches) {
 
-        document.querySelectorAll(".projeto-card, .cert-card").forEach(card => {
+        document.querySelectorAll(".projeto-card, .cert-card, .contato-card").forEach(card => {
 
             // mede o card uma vez ao entrar — getBoundingClientRect a cada
             // mousemove força recálculo de layout
