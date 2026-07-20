@@ -58,14 +58,14 @@ LINHA = colors.HexColor("#c9d4de")
 nome_st = ParagraphStyle("nome", fontName=FB, fontSize=23, leading=27, textColor=ESCURO)
 cargo_st = ParagraphStyle("cargo", fontName=F, fontSize=11.5, leading=15, textColor=DESTAQUE, spaceBefore=2)
 contato_st = ParagraphStyle("contato", fontName=F, fontSize=9, leading=13, textColor=CINZA, spaceBefore=4)
-secao_st = ParagraphStyle("secao", fontName=FB, fontSize=11, leading=14, textColor=DESTAQUE, spaceBefore=12)
+secao_st = ParagraphStyle("secao", fontName=FB, fontSize=11, leading=14, textColor=DESTAQUE, spaceBefore=9)
 empresa_st = ParagraphStyle("empresa", fontName=FB, fontSize=10.5, leading=13.5, textColor=ESCURO)
 funcao_st = ParagraphStyle("funcao", fontName=FB, fontSize=9.5, leading=12.5, textColor=DESTAQUE)
 data_st = ParagraphStyle("data", fontName=FI, fontSize=9, leading=12.5, textColor=CINZA, alignment=2)
 nota_st = ParagraphStyle("nota", fontName=FI, fontSize=8.5, leading=11, textColor=CINZA)
-corpo_st = ParagraphStyle("corpo", fontName=F, fontSize=9.5, leading=12.8, textColor=ESCURO, alignment=TA_JUSTIFY)
+corpo_st = ParagraphStyle("corpo", fontName=F, fontSize=9.5, leading=12.3, textColor=ESCURO, alignment=TA_JUSTIFY)
 bullet_st = ParagraphStyle("bullet", parent=corpo_st, alignment=0)
-hab_cat_st = ParagraphStyle("habcat", fontName=FB, fontSize=9.5, leading=12.8, textColor=ESCURO)
+hab_cat_st = ParagraphStyle("habcat", fontName=FB, fontSize=9.5, leading=12.3, textColor=ESCURO)
 
 
 def secao(titulo):
@@ -218,28 +218,22 @@ story += secao("Featured Projects")
 
 projetos = [
     ("Court Data Extraction Bot",
-     "Automation that collects case files across Brazilian courts: it accesses each court system, downloads "
-     "the case records, filters the relevant documents and classifies every procedural update, producing "
-     "structured JSON for the legal workflow. Architected as independent packages per court system (EPROC, "
-     "e-SAJ, PJe and PROJUDI) and integrated with the CNJ public DataJud API. Built as a team.",
+     "Collects case files across Brazilian courts: downloads the records, filters documents and classifies every "
+     "procedural update, producing structured JSON for the legal workflow. Architected as independent packages "
+     "per court system (EPROC, e-SAJ, PJe and PROJUDI) and integrated with the CNJ DataJud API. Built as a team.",
      "Python · Playwright · DataJud API (CNJ) · RPA"),
     ("Judicial Deposit Receipts Bot",
-     "End-to-end automation that exports the collateral report from the legal system, resolves the company ID "
-     "for each account and queries the Judicial Deposit Withdrawal Receipt on the bank's portal, saving the "
-     "PDFs automatically and recording the status of each query.",
+     "Exports the collateral report from the legal system, resolves the company ID for each account and queries "
+     "the Judicial Deposit Withdrawal Receipt on the bank's portal, saving the PDFs and recording each status.",
      "Python · Playwright · PDF · Excel"),
     ("Export Documentation Automation",
      "Bots for issuing DU-E (Brazilian Single Export Declaration), Certificates of Origin and Halal "
-     "certification, filling the systems from tracking spreadsheets and automatically filing the issued documents.",
+     "certification, filling the systems from tracking spreadsheets and filing the issued documents.",
      "Python · Playwright · RPA · Foreign Trade"),
     ("Legal Automation (RPA)",
      "Bots to automate legal tasks: issuing judicial release orders, generating court fee slips, judicial "
      "calculations, initial pleadings and controllership routines.",
      "Python · Selenium · Playwright · RPA"),
-    ("Automation Management Platform",
-     "Internal system to register, monitor and manage the company's multiple bots and automated "
-     "processes.",
-     "Python · RPA · Dashboards"),
     ("Smart Legal Document Generator",
      "System that analyzes case files (PDF and DOCX) and automatically drafts legal documents "
      "with AI integration.",
@@ -319,10 +313,9 @@ t.setStyle(TableStyle([
 story.append(t)
 
 # ---------------------------------------------------------------- idiomas e voluntariado
-story += secao("Languages")
-story.append(Paragraph("Portuguese — native &nbsp;·&nbsp; English — intermediate", corpo_st))
-
-story += secao("Volunteer Work")
+story += secao("Languages & Volunteer Work")
+story.append(Paragraph("<b>Languages:</b> Portuguese — native &nbsp;·&nbsp; English — intermediate", corpo_st))
+story.append(Spacer(1, 3))
 story.append(Paragraph(
     "Volunteer scout for 12 years — ongoing work in team leadership, activity organization and youth "
     "development; skills applied directly to project management and teamwork.",
@@ -335,8 +328,8 @@ doc = SimpleDocTemplate(
     pagesize=A4,
     leftMargin=1.6 * cm,
     rightMargin=1.6 * cm,
-    topMargin=1.4 * cm,
-    bottomMargin=1.4 * cm,
+    topMargin=1.25 * cm,
+    bottomMargin=1.25 * cm,
     title="Resume — Bruno Garcia",
     author="Bruno Garcia",
     subject="RPA Developer",

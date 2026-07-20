@@ -57,14 +57,14 @@ LINHA = colors.HexColor("#c9d4de")
 nome_st = ParagraphStyle("nome", fontName=FB, fontSize=23, leading=27, textColor=ESCURO)
 cargo_st = ParagraphStyle("cargo", fontName=F, fontSize=11.5, leading=15, textColor=DESTAQUE, spaceBefore=2)
 contato_st = ParagraphStyle("contato", fontName=F, fontSize=9, leading=13, textColor=CINZA, spaceBefore=4)
-secao_st = ParagraphStyle("secao", fontName=FB, fontSize=11, leading=14, textColor=DESTAQUE, spaceBefore=12)
+secao_st = ParagraphStyle("secao", fontName=FB, fontSize=11, leading=14, textColor=DESTAQUE, spaceBefore=9)
 empresa_st = ParagraphStyle("empresa", fontName=FB, fontSize=10.5, leading=13.5, textColor=ESCURO)
 funcao_st = ParagraphStyle("funcao", fontName=FB, fontSize=9.5, leading=12.5, textColor=DESTAQUE)
 data_st = ParagraphStyle("data", fontName=FI, fontSize=9, leading=12.5, textColor=CINZA, alignment=2)
 nota_st = ParagraphStyle("nota", fontName=FI, fontSize=8.5, leading=11, textColor=CINZA)
-corpo_st = ParagraphStyle("corpo", fontName=F, fontSize=9.5, leading=12.8, textColor=ESCURO, alignment=TA_JUSTIFY)
+corpo_st = ParagraphStyle("corpo", fontName=F, fontSize=9.5, leading=12.3, textColor=ESCURO, alignment=TA_JUSTIFY)
 bullet_st = ParagraphStyle("bullet", parent=corpo_st, alignment=0)
-hab_cat_st = ParagraphStyle("habcat", fontName=FB, fontSize=9.5, leading=12.8, textColor=ESCURO)
+hab_cat_st = ParagraphStyle("habcat", fontName=FB, fontSize=9.5, leading=12.3, textColor=ESCURO)
 
 
 def secao(titulo):
@@ -217,28 +217,22 @@ story += secao("Projetos em Destaque")
 
 projetos = [
     ("Robô de Extração de Tribunais",
-     "Automação que coleta processos nos tribunais brasileiros: acessa o sistema, baixa os autos, filtra os "
-     "documentos relevantes e classifica cada andamento, gerando JSON estruturado para o fluxo jurídico. "
-     "Arquitetado em pacotes independentes por sistema processual (EPROC, e-SAJ, PJe e PROJUDI) e integrado "
-     "à API pública DataJud do CNJ. Desenvolvido em equipe.",
+     "Coleta processos nos tribunais brasileiros: baixa os autos, filtra documentos e classifica cada andamento, "
+     "gerando JSON para o fluxo jurídico. Arquitetado em pacotes independentes por sistema processual (EPROC, "
+     "e-SAJ, PJe e PROJUDI) e integrado à API DataJud do CNJ. Desenvolvido em equipe.",
      "Python · Playwright · API DataJud (CNJ) · RPA"),
     ("Robô de Comprovantes Judiciais",
-     "Automação de ponta a ponta que exporta o relatório de garantias do sistema jurídico, resolve o CNPJ de "
-     "cada conta e consulta o Comprovante de Resgate de Depósito Judicial no portal do banco, salvando os PDFs "
-     "automaticamente e registrando o status de cada consulta.",
+     "Exporta o relatório de garantias do sistema jurídico, resolve o CNPJ de cada conta e consulta o "
+     "Comprovante de Resgate de Depósito Judicial no portal do banco, salvando os PDFs e registrando o status.",
      "Python · Playwright · PDF · Excel"),
     ("Automação de Documentos de Exportação",
      "Robôs para emissão de DU-E, Certificado de Origem e certificação Halal, preenchendo os sistemas a partir "
-     "de planilhas de controle e arquivando automaticamente os documentos emitidos.",
+     "de planilhas de controle e arquivando os documentos emitidos.",
      "Python · Playwright · RPA · Comércio Exterior"),
     ("Automação Jurídica (RPA)",
      "Robôs para automação de tarefas jurídicas: emissão de alvarás, geração de guias, cálculos judiciais, "
      "petições iniciais e rotinas da controladoria.",
      "Python · Selenium · Playwright · RPA"),
-    ("Plataforma de Gestão de Automações",
-     "Sistema interno para cadastro, monitoramento e gerenciamento de múltiplos robôs e processos "
-     "automatizados da empresa.",
-     "Python · RPA · Dashboards"),
     ("Gerador Inteligente de Documentos Jurídicos",
      "Sistema que analisa documentos processuais (PDF e DOCX) e gera peças jurídicas automaticamente "
      "com integração de IA.",
@@ -318,10 +312,9 @@ t.setStyle(TableStyle([
 story.append(t)
 
 # ---------------------------------------------------------------- idiomas e voluntariado
-story += secao("Idiomas")
-story.append(Paragraph("Português — nativo &nbsp;·&nbsp; Inglês — intermediário", corpo_st))
-
-story += secao("Atividades Voluntárias")
+story += secao("Idiomas e Atividades Voluntárias")
+story.append(Paragraph("<b>Idiomas:</b> Português — nativo &nbsp;·&nbsp; Inglês — intermediário", corpo_st))
+story.append(Spacer(1, 3))
 story.append(Paragraph(
     "Escoteiro voluntário há 12 anos — atuação contínua em liderança de equipes, organização de atividades e "
     "formação de jovens; competências aplicadas diretamente na condução de projetos e no trabalho em equipe.",
@@ -334,8 +327,8 @@ doc = SimpleDocTemplate(
     pagesize=A4,
     leftMargin=1.6 * cm,
     rightMargin=1.6 * cm,
-    topMargin=1.4 * cm,
-    bottomMargin=1.4 * cm,
+    topMargin=1.25 * cm,
+    bottomMargin=1.25 * cm,
     title="Currículo — Bruno Garcia",
     author="Bruno Garcia",
     subject="Desenvolvedor RPA",
