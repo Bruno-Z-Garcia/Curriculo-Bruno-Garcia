@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
-"""Gera assets/Bruno_Garcia_Curriculo.pdf a partir do conteúdo definido aqui.
+"""Gera assets/Bruno_Garcia_Resume_EN.pdf (versão em inglês do currículo).
 
-Uso: python gerar_curriculo.py
+Uso: python gerar_curriculo_en.py
+Versão em português: gerar_curriculo.py
 """
 
 import os
@@ -26,7 +27,7 @@ from reportlab.platypus import (
     TableStyle,
 )
 
-SAIDA = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "Bruno_Garcia_Curriculo.pdf")
+SAIDA = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "Bruno_Garcia_Resume_EN.pdf")
 
 # ---------------------------------------------------------------- fontes
 FONTES_WINDOWS = {
@@ -120,121 +121,121 @@ story = []
 
 # ---------------------------------------------------------------- cabeçalho
 story.append(Paragraph("Bruno Garcia", nome_st))
-story.append(Paragraph("Desenvolvedor RPA | Pleno", cargo_st))
+story.append(Paragraph("RPA Developer | Mid-level", cargo_st))
 story.append(Paragraph(
-    "Curitiba/PR &nbsp;·&nbsp; (41) 99847-6818 &nbsp;·&nbsp; "
+    "Curitiba, Brazil &nbsp;·&nbsp; +55 (41) 99847-6818 &nbsp;·&nbsp; "
     '<a href="mailto:bg5306453@gmail.com" color="#1f5fa8">bg5306453@gmail.com</a>',
     contato_st,
 ))
 story.append(Paragraph(
     '<a href="https://www.linkedin.com/in/bruno-garcia-b0013a254/" color="#1f5fa8">linkedin.com/in/bruno-garcia-b0013a254</a> &nbsp;·&nbsp; '
     '<a href="https://github.com/Bruno-Z-Garcia" color="#1f5fa8">github.com/Bruno-Z-Garcia</a> &nbsp;·&nbsp; '
-    '<a href="https://bruno-z-garcia.github.io/Curriculo-Bruno-Garcia/" color="#1f5fa8">bruno-z-garcia.github.io/Curriculo-Bruno-Garcia</a>',
+    '<a href="https://bruno-z-garcia.github.io/Curriculo-Bruno-Garcia/index-en.html" color="#1f5fa8">bruno-z-garcia.github.io/Curriculo-Bruno-Garcia</a>',
     contato_st,
 ))
 
 # ---------------------------------------------------------------- resumo
-story += secao("Resumo Profissional")
+story += secao("Professional Summary")
 story.append(Paragraph(
-    "Desenvolvedor RPA com mais de 4 anos de experiência em tecnologia e formação em Gestão da Tecnologia da "
-    "Informação (UniCuritiba). Especializado em automação de processos com Python, C#, Selenium, Playwright e "
-    "Power Automate Desktop, atuando em todo o ciclo das soluções — do levantamento de requisitos e arquitetura "
-    "à implantação e sustentação em produção. Experiência em integrações entre sistemas via APIs REST, automação "
-    "da geração e do processamento de documentos (PDF e Word), extração e tratamento de dados, dashboards e "
-    "indicadores gerenciais, aplicação de Inteligência Artificial (API OpenAI) em processos corporativos e bancos "
-    "de dados relacionais (MySQL e SQL Server). Histórico de robôs e sistemas que reduzem atividades manuais, "
-    "aumentam a produtividade e garantem maior confiabilidade nas operações.",
+    "RPA Developer with over 4 years of experience in technology and a degree in Information Technology "
+    "Management (UniCuritiba). Specialized in process automation with Python, C#, Selenium, Playwright and "
+    "Power Automate Desktop, working across the entire solution lifecycle — from requirements gathering and "
+    "architecture to deployment and production support. Experienced in system integrations through REST APIs, "
+    "automated document generation and processing (PDF and Word), data extraction and transformation, dashboards "
+    "and management indicators, Artificial Intelligence (OpenAI API) applied to business processes and relational "
+    "databases (MySQL and SQL Server). Track record of bots and systems that reduce manual work, increase "
+    "productivity and make operations more reliable.",
     corpo_st,
 ))
 
 # ---------------------------------------------------------------- experiência
-story += secao("Experiência Profissional")
+story += secao("Professional Experience")
 
 story.append(KeepTogether([
-    linha_empresa_data("Plenna Comércio Exterior — Curitiba/PR", "Abr/2026 – Atual"),
-    linha_funcao_data("Desenvolvedor RPA | Pleno", ""),
+    linha_empresa_data("Plenna Comércio Exterior — Curitiba, Brazil", "Apr/2026 – Present"),
+    linha_funcao_data("RPA Developer | Mid-level", ""),
     bullets([
-        "Desenvolvimento de robôs de automação (RPA) com Python, C#, Playwright e Selenium para processos "
-        "de comércio exterior e rotinas administrativas.",
-        "Automação da geração e do processamento de documentos, extração e tratamento de dados.",
-        "Criação e manutenção de sistemas internos, aplicações web e sites.",
-        "Integração entre sistemas por meio de APIs e serviços externos.",
-        "Deploy, publicação e sustentação de robôs e aplicações em ambiente produtivo.",
-        "Gerenciamento de servidores, migração de sistemas e dados e gestão de cloud (Microsoft Azure).",
+        "Development of automation bots (RPA) with Python, C#, Playwright and Selenium for foreign trade "
+        "processes and administrative routines.",
+        "Automation of document generation and processing, data extraction and transformation.",
+        "Creation and maintenance of internal systems, web applications and websites.",
+        "System integration through APIs and external services.",
+        "Deployment, publishing and support of bots and applications in production.",
+        "Server management, system and data migration and cloud management (Microsoft Azure).",
     ]),
 ]))
 story.append(Spacer(1, 8))
 
 story.append(KeepTogether([
-    linha_empresa_data("Estalk Advogados — Curitiba/PR", "Jul/2024 – Atual"),
-    linha_funcao_data("Desenvolvedor RPA | Pleno", "Fev/2026 – Atual"),
+    linha_empresa_data("Estalk Advogados (law firm) — Curitiba, Brazil", "Jul/2024 – Present"),
+    linha_funcao_data("RPA Developer | Mid-level", "Feb/2026 – Present"),
     bullets([
-        "Desenvolvimento de robôs e aplicações com Python, C#, Power Automate Desktop, Selenium, Playwright "
-        "e Inteligência Artificial, automatizando processos jurídicos e administrativos.",
-        "Responsável por todo o ciclo das soluções — do levantamento de requisitos e arquitetura à "
-        "implantação e manutenção em produção.",
-        "Integração entre sistemas por meio de APIs, incluindo sistemas jurídicos (CPJ, XJUS e Preâmbulo).",
-        "Automação da geração e do processamento de documentos (PDF e Word) e extração e tratamento de dados.",
-        "Desenvolvimento de aplicações web com Python (Flask), APIs REST e bancos de dados relacionais.",
-        "Dashboards e indicadores (KPIs), modelagem e otimização de bancos de dados.",
-        "Aplicação de Inteligência Artificial (API OpenAI) em processos corporativos.",
+        "Development of bots and applications with Python, C#, Power Automate Desktop, Selenium, Playwright "
+        "and Artificial Intelligence, automating legal and administrative processes.",
+        "Responsible for the entire solution lifecycle — from requirements gathering and architecture to "
+        "deployment and maintenance in production.",
+        "System integration through APIs, including legal systems (CPJ, XJUS and Preâmbulo).",
+        "Automated document generation and processing (PDF and Word) and data extraction and transformation.",
+        "Development of web applications with Python (Flask), REST APIs and relational databases.",
+        "Dashboards and indicators (KPIs), database modeling and optimization.",
+        "Artificial Intelligence (OpenAI API) applied to business processes.",
     ]),
 ]))
 story.append(Spacer(1, 5))
 story.append(KeepTogether([
-    linha_funcao_data("Desenvolvedor RPA | Júnior", "Jul/2024 – Fev/2026"),
+    linha_funcao_data("RPA Developer | Junior", "Jul/2024 – Feb/2026"),
     bullets([
-        "Criação de robôs com Python, Selenium e Power Automate: automações web, geração automática de "
-        "documentos, tratamento de dados e integração de informações entre plataformas.",
-        "Desenvolvimento backend com Python (Flask), interfaces web e modelagem de banco de dados MySQL.",
-        "Integrações entre sistemas por meio de APIs.",
-        "Atuação em todas as etapas: análise da necessidade, implementação, testes e manutenção.",
+        "Creation of bots with Python, Selenium and Power Automate: web automations, automatic document "
+        "generation, data processing and information integration across platforms.",
+        "Backend development with Python (Flask), web interfaces and MySQL database modeling.",
+        "System integrations through APIs.",
+        "Involvement in every stage: needs analysis, implementation, testing and maintenance.",
     ]),
 ]))
 story.append(Spacer(1, 8))
 
 story.append(KeepTogether([
-    linha_empresa_data("Tribunal de Justiça do Estado do Paraná (TJPR) — Curitiba/PR", "Mai/2023 – Jul/2024"),
-    linha_funcao_data("Estagiário de TI", ""),
+    linha_empresa_data("Court of Justice of the State of Paraná (TJPR) — Curitiba, Brazil", "May/2023 – Jul/2024"),
+    linha_funcao_data("IT Intern", ""),
     bullets([
-        "Suporte técnico a usuários e manutenção de computadores, periféricos e impressoras.",
-        "Apoio à infraestrutura: redes, switches, ramais e telefonia corporativa.",
+        "Technical support for users and maintenance of computers, peripherals and printers.",
+        "Infrastructure support: networks, switches, extensions and corporate telephony.",
     ]),
 ]))
 story.append(Spacer(1, 8))
 
 story.append(KeepTogether([
-    linha_empresa_data("SpaceSet — Curitiba/PR", "Ago/2021 – Set/2022"),
-    linha_funcao_data("Analista de TI", ""),
+    linha_empresa_data("SpaceSet — Curitiba, Brazil", "Aug/2021 – Sep/2022"),
+    linha_funcao_data("IT Analyst", ""),
     bullets([
-        "Suporte técnico, manutenção de sistemas e gerenciamento de infraestrutura de TI.",
-        "Administração de sistemas corporativos e implementação de melhorias tecnológicas.",
+        "Technical support, systems maintenance and IT infrastructure management.",
+        "Administration of corporate systems and implementation of technology improvements.",
     ]),
 ]))
 
 # ---------------------------------------------------------------- projetos
-story += secao("Projetos em Destaque")
+story += secao("Featured Projects")
 
 projetos = [
-    ("Automação Jurídica (RPA)",
-     "Robôs para automação de tarefas jurídicas: emissão de alvarás, geração de guias, cálculos judiciais, "
-     "petições iniciais e rotinas da controladoria.",
+    ("Legal Automation (RPA)",
+     "Bots to automate legal tasks: issuing judicial release orders, generating court fee slips, judicial "
+     "calculations, initial pleadings and controllership routines.",
      "Python · Selenium · Playwright · RPA"),
-    ("Robôs de Integração de Sistemas",
-     "Automações responsáveis pela recepção de sinistros, importação e exportação de dados entre sistemas "
-     "corporativos e processamento automatizado de informações.",
-     "Python · C# · APIs REST"),
-    ("Plataforma de Gestão de Automações",
-     "Sistema interno para cadastro, monitoramento e gerenciamento de múltiplos robôs e processos "
-     "automatizados da empresa.",
+    ("System Integration Bots",
+     "Automations responsible for claim intake, importing and exporting data between corporate systems "
+     "and automated information processing.",
+     "Python · C# · REST APIs"),
+    ("Automation Management Platform",
+     "Internal system to register, monitor and manage the company's multiple bots and automated "
+     "processes.",
      "Python · RPA · Dashboards"),
-    ("Gerador Inteligente de Documentos Jurídicos",
-     "Sistema que analisa documentos processuais (PDF e DOCX) e gera peças jurídicas automaticamente "
-     "com integração de IA.",
+    ("Smart Legal Document Generator",
+     "System that analyzes case files (PDF and DOCX) and automatically drafts legal documents "
+     "with AI integration.",
      "Python · Flask · OpenAI"),
-    ("Sistema de Análises Jurídicas",
-     "Plataforma web corporativa para gestão completa de análises jurídicas, com múltiplos níveis de usuários "
-     "(advogados, supervisores e diretoria), geração automática de documentos e dashboards analíticos.",
+    ("Legal Analysis System",
+     "Corporate web platform for the full management of legal analyses, with multiple user levels "
+     "(lawyers, supervisors and board members), automatic document generation and analytics dashboards.",
      "Python · Flask · JavaScript · MySQL"),
 ]
 for titulo, desc, tech in projetos:
@@ -246,17 +247,17 @@ for titulo, desc, tech in projetos:
     ]))
 
 # ---------------------------------------------------------------- habilidades
-story += secao("Habilidades Técnicas")
+story += secao("Technical Skills")
 
 habilidades = [
-    ("Automação &amp; RPA", "Selenium, Playwright, Power Automate Desktop, Web Scraping, orquestração de robôs"),
-    ("Linguagens", "Python, C#, SQL, JavaScript, TypeScript, Java, VBA"),
-    ("Backend &amp; APIs", "Flask, Node.js, APIs REST, integrações entre sistemas corporativos"),
-    ("Inteligência Artificial", "Integração com APIs de IA (OpenAI) aplicada a automações e processos corporativos"),
-    ("Bancos de Dados", "MySQL, SQL Server e SQLite — modelagem e otimização de consultas"),
-    ("Dados &amp; Documentos", "Power BI, Excel avançado (VBA), geração de PDF, Word e Excel com Python"),
-    ("Desenvolvimento Web", "HTML, CSS, Bootstrap, React, Angular"),
-    ("DevOps &amp; Cloud", "Git, GitHub, deploy de aplicações, Microsoft Azure"),
+    ("Automation &amp; RPA", "Selenium, Playwright, Power Automate Desktop, Web Scraping, bot orchestration"),
+    ("Languages", "Python, C#, SQL, JavaScript, TypeScript, Java, VBA"),
+    ("Backend &amp; APIs", "Flask, Node.js, REST APIs, integrations between corporate systems"),
+    ("Artificial Intelligence", "Integration with AI APIs (OpenAI) applied to automations and business processes"),
+    ("Databases", "MySQL, SQL Server and SQLite — data modeling and query optimization"),
+    ("Data &amp; Documents", "Power BI, advanced Excel (VBA), PDF, Word and Excel generation with Python"),
+    ("Web Development", "HTML, CSS, Bootstrap, React, Angular"),
+    ("DevOps &amp; Cloud", "Git, GitHub, application deployment, Microsoft Azure"),
 ]
 t = Table(
     [[Paragraph(cat, hab_cat_st), Paragraph(desc, bullet_st)] for cat, desc in habilidades],
@@ -272,25 +273,25 @@ t.setStyle(TableStyle([
 story.append(t)
 
 # ---------------------------------------------------------------- formação
-story += secao("Formação Acadêmica")
+story += secao("Education")
 story.append(KeepTogether([
-    linha_empresa_data("Gestão da Tecnologia da Informação — UniCuritiba", "2023 – 2025"),
+    linha_empresa_data("Information Technology Management — UniCuritiba", "2023 – 2025"),
 ]))
 
 # ---------------------------------------------------------------- cursos
-story += secao("Cursos e Certificações")
+story += secao("Courses & Certifications")
 cursos_esq = [
     "C# — DankiCode (2026)",
     "Node.js — DankiCode (2026)",
-    "Inteligência Artificial — DankiCode (2026)",
+    "Artificial Intelligence — DankiCode (2026)",
     "DevOps Essential — DankiCode (2026)",
-    "Python Completo — DankiCode (2025)",
+    "Complete Python — DankiCode (2025)",
 ]
 cursos_dir = [
-    "Webmaster Front-End Completo — DankiCode (2025)",
+    "Complete Front-End Webmaster — DankiCode (2025)",
     "React Native — DankiCode (2025)",
     "Microsoft Azure — Microsoft (2022)",
-    "Pacote Office 365 — Educavy (2022)",
+    "Office 365 Suite — Educavy (2022)",
 ]
 t = Table(
     [[Paragraph(e, bullet_st), Paragraph(d, bullet_st)] for e, d in zip_longest(cursos_esq, cursos_dir, fillvalue="")],
@@ -306,13 +307,13 @@ t.setStyle(TableStyle([
 story.append(t)
 
 # ---------------------------------------------------------------- idiomas e voluntariado
-story += secao("Idiomas")
-story.append(Paragraph("Português — nativo &nbsp;·&nbsp; Inglês — intermediário", corpo_st))
+story += secao("Languages")
+story.append(Paragraph("Portuguese — native &nbsp;·&nbsp; English — intermediate", corpo_st))
 
-story += secao("Atividades Voluntárias")
+story += secao("Volunteer Work")
 story.append(Paragraph(
-    "Escoteiro voluntário há 12 anos — atuação contínua em liderança de equipes, organização de atividades e "
-    "formação de jovens; competências aplicadas diretamente na condução de projetos e no trabalho em equipe.",
+    "Volunteer scout for 12 years — ongoing work in team leadership, activity organization and youth "
+    "development; skills applied directly to project management and teamwork.",
     corpo_st,
 ))
 
@@ -324,9 +325,9 @@ doc = SimpleDocTemplate(
     rightMargin=1.6 * cm,
     topMargin=1.4 * cm,
     bottomMargin=1.4 * cm,
-    title="Currículo — Bruno Garcia",
+    title="Resume — Bruno Garcia",
     author="Bruno Garcia",
-    subject="Desenvolvedor RPA",
+    subject="RPA Developer",
 )
 doc.build(story)
 print(f"PDF gerado: {SAIDA}")

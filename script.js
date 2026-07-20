@@ -7,6 +7,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const reduzirMovimento = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     // =============================
+    // IDIOMA DA PÁGINA
+    // =============================
+
+    // o mesmo script atende index.html (pt-BR) e index-en.html (en);
+    // os textos gerados via JS mudam conforme o lang do documento
+    const idiomaEN = (document.documentElement.lang || "").toLowerCase().startsWith("en");
+
+    // =============================
     // FUNDO INTERATIVO — PLACA DE CIRCUITO
     // =============================
 
@@ -40,9 +48,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const PALAVRAS_TECH = [
             "RPA", "Python", "C#", "Playwright", "Selenium", "Power Automate",
-            "Flask", "API REST", "MySQL", "SQL Server", "OpenAI", "Azure",
-            "bot.run()", "page.click()", "web scraping", "automação", "robôs",
-            "IA", "</>", "{ }", "git push", "deploy", "async/await", "SELECT *"
+            "Flask", idiomaEN ? "REST API" : "API REST", "MySQL", "SQL Server", "OpenAI", "Azure",
+            "bot.run()", "page.click()", "web scraping",
+            idiomaEN ? "automation" : "automação", idiomaEN ? "bots" : "robôs",
+            idiomaEN ? "AI" : "IA", "</>", "{ }", "git push", "deploy", "async/await", "SELECT *"
         ];
 
         let largura, altura, extra;
@@ -465,7 +474,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const botao = document.querySelector(".menu-toggle");
         if (botao) {
             botao.setAttribute("aria-expanded", aberto);
-            botao.setAttribute("aria-label", aberto ? "Fechar menu" : "Abrir menu");
+            botao.setAttribute("aria-label", aberto
+                ? (idiomaEN ? "Close menu" : "Fechar menu")
+                : (idiomaEN ? "Open menu" : "Abrir menu"));
         }
     };
 
@@ -612,7 +623,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (typewriter) {
 
-        const frases = [
+        const frases = idiomaEN ? [
+            "RPA · Process Automation",
+            "Playwright · Selenium · Power Automate",
+            "Python · C# · Flask",
+            "REST APIs · System Integrations",
+            "Applied AI · OpenAI API",
+            "MySQL · SQL Server",
+            "DevOps · Microsoft Azure"
+        ] : [
             "RPA · Automação de Processos",
             "Playwright · Selenium · Power Automate",
             "Python · C# · Flask",
@@ -834,18 +853,22 @@ document.addEventListener("DOMContentLoaded", function () {
             meses -= 12;
         }
 
+        const palavras = idiomaEN
+            ? { singAno: " year", plurAno: " years", singMes: " month", plurMes: " months", e: " and ", vazio: "less than 1 month" }
+            : { singAno: " ano", plurAno: " anos", singMes: " mês", plurMes: " meses", e: " e ", vazio: "menos de 1 mês" };
+
         let resultado = "";
 
         if (anos > 0) {
-            resultado += anos + (anos > 1 ? " anos" : " ano");
+            resultado += anos + (anos > 1 ? palavras.plurAno : palavras.singAno);
         }
 
         if (meses > 0) {
-            if (resultado !== "") resultado += " e ";
-            resultado += meses + (meses > 1 ? " meses" : " mês");
+            if (resultado !== "") resultado += palavras.e;
+            resultado += meses + (meses > 1 ? palavras.plurMes : palavras.singMes);
         }
 
-        return resultado || "menos de 1 mês";
+        return resultado || palavras.vazio;
     }
 
     document.querySelectorAll(".duracao").forEach(el => {
@@ -856,5 +879,49 @@ document.addEventListener("DOMContentLoaded", function () {
         el.textContent = calcularDuracao(inicio, fim);
 
     });
+
+    // =============================
+    // MODAL DE DOWNLOAD DO CURRÍCULO
+    // (escolha do idioma do PDF)
+    // =============================
+
+    const modalCurriculo = document.getElementById("modal-curriculo");
+
+    if (modalCurriculo) {
+
+        function abrirModal() {
+            modalCurriculo.hidden = false;
+            document.body.classList.add("modal-aberto");
+        }
+
+        function fecharModal() {
+            modalCurriculo.hidden = true;
+            document.body.classList.remove("modal-aberto");
+        }
+
+        // os botões "Currículo"/"Resume" abrem o modal em vez de baixar direto;
+        // o href original fica como fallback para quem estiver sem JS
+        document.querySelectorAll(".curriculo-download a, .mobile-download a").forEach(link => {
+            link.removeAttribute("target");
+            link.addEventListener("click", (e) => {
+                e.preventDefault();
+                abrirModal();
+            });
+        });
+
+        modalCurriculo.querySelectorAll("[data-fechar]").forEach(el => {
+            el.addEventListener("click", fecharModal);
+        });
+
+        // escolher um idioma fecha o modal e deixa o download seguir pelo <a>
+        modalCurriculo.querySelectorAll(".modal-opcao").forEach(opcao => {
+            opcao.addEventListener("click", fecharModal);
+        });
+
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && !modalCurriculo.hidden) fecharModal();
+        });
+
+    }
 
 });
