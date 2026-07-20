@@ -216,14 +216,25 @@ story.append(KeepTogether([
 story += secao("Projetos em Destaque")
 
 projetos = [
+    ("Robô de Extração de Tribunais",
+     "Automação que coleta processos nos tribunais brasileiros: acessa o sistema, baixa os autos, filtra os "
+     "documentos relevantes e classifica cada andamento, gerando JSON estruturado para o fluxo jurídico. "
+     "Arquitetado em pacotes independentes por sistema processual (EPROC, e-SAJ, PJe e PROJUDI) e integrado "
+     "à API pública DataJud do CNJ. Desenvolvido em equipe.",
+     "Python · Playwright · API DataJud (CNJ) · RPA"),
+    ("Robô de Comprovantes Judiciais",
+     "Automação de ponta a ponta que exporta o relatório de garantias do sistema jurídico, resolve o CNPJ de "
+     "cada conta e consulta o Comprovante de Resgate de Depósito Judicial no portal do banco, salvando os PDFs "
+     "automaticamente e registrando o status de cada consulta.",
+     "Python · Playwright · PDF · Excel"),
+    ("Automação de Documentos de Exportação",
+     "Robôs para emissão de DU-E, Certificado de Origem e certificação Halal, preenchendo os sistemas a partir "
+     "de planilhas de controle e arquivando automaticamente os documentos emitidos.",
+     "Python · Playwright · RPA · Comércio Exterior"),
     ("Automação Jurídica (RPA)",
      "Robôs para automação de tarefas jurídicas: emissão de alvarás, geração de guias, cálculos judiciais, "
      "petições iniciais e rotinas da controladoria.",
      "Python · Selenium · Playwright · RPA"),
-    ("Robôs de Integração de Sistemas",
-     "Automações responsáveis pela recepção de sinistros, importação e exportação de dados entre sistemas "
-     "corporativos e processamento automatizado de informações.",
-     "Python · C# · APIs REST"),
     ("Plataforma de Gestão de Automações",
      "Sistema interno para cadastro, monitoramento e gerenciamento de múltiplos robôs e processos "
      "automatizados da empresa.",

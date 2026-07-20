@@ -146,41 +146,58 @@
         <h2>Sobre Mí</h2>
 
         <p>
-            Mi nombre es Bruno Garcia, tengo 25 años y soy graduado en Gestión de Tecnología de la Información por UniCuritiba.
-            Trabajo hace más de cuatro años en el área de tecnología, con enfoque en RPA, automatización de procesos y desarrollo
-            de soluciones que optimizan operaciones, reducen actividades manuales y aumentan la productividad.
+            Desarrollador RPA con más de 4 años en tecnología, especializado en automatización de procesos y en el
+            desarrollo de soluciones que eliminan trabajo manual y devuelven tiempo a las operaciones.
         </p>
 
         <br>
 
         <p>
-            Desarrollo robots y automatizaciones utilizando <strong>Python, C#, Selenium, Playwright y Power Automate Desktop</strong>,
-            automatizando procesos jurídicos y administrativos: automatización web, generación y procesamiento de documentos
-            (PDF y Word), extracción y tratamiento de datos e integración entre sistemas a través de APIs REST.
+            Hoy desarrollo robots y sistemas que automatizan procesos jurídicos, administrativos y de comercio
+            exterior — actuando de punta a punta: levantamiento de requisitos, arquitectura de la solución,
+            desarrollo, implantación y soporte en producción.
+        </p>
+
+        <br>
+
+        <p>Lo que hago en el día a día:</p>
+
+        <ul class="sobre-lista">
+            <li>Robots de automatización (RPA) con <strong>Python, C#, Playwright, Selenium y Power Automate Desktop</strong></li>
+            <li>Automatización de documentos: generación y procesamiento de PDF y Word, extracción y tratamiento de datos</li>
+            <li>Integraciones entre sistemas vía APIs REST, incluyendo sistemas jurídicos como CPJ, XJUS y Preâmbulo</li>
+            <li>Aplicaciones web y backend en Python (Flask), con MySQL y SQL Server</li>
+            <li>Inteligencia Artificial aplicada a procesos corporativos (API OpenAI)</li>
+            <li>Dashboards e indicadores (KPIs) para seguimiento operacional</li>
+            <li>Deploy, servidores y entornos en cloud (Microsoft Azure)</li>
+        </ul>
+
+        <br>
+
+        <p>
+            Antes de migrar a desarrollo, trabajé en soporte e infraestructura de TI en el Tribunal de Justicia de
+            Paraná y en SpaceSet. Esa base marca la diferencia hoy: entiendo el entorno donde corren los robots,
+            y no solo su código.
         </p>
 
         <br>
 
         <p>
-            Tengo experiencia en proyectos end-to-end — desde el levantamiento de requisitos y la arquitectura de la solución hasta la
-            implantación, homologación y soporte en producción. Esto incluye modelado de bases de datos (MySQL y SQL Server),
-            desarrollo backend en Python (Flask), construcción de dashboards gerenciales y aplicación de
-            Inteligencia Artificial (API OpenAI) en procesos corporativos.
+            Fui scout voluntario durante 12 años, período que moldeó mi forma de trabajar — organización, disciplina,
+            responsabilidad y la disposición de llevar un problema hasta el final.
         </p>
 
         <br>
 
         <p>
-            Además de la experiencia técnica, fui scout voluntario durante 12 años, período en el cual desarrollé
-            habilidades como liderazgo, organización, disciplina, resiliencia y responsabilidad — competencias que aplico
-            directamente en la conducción de proyectos y en el trabajo en equipo.
+            Graduado en Gestión de Tecnología de la Información por UniCuritiba. Actualmente me especializo en RPA
+            con UiPath y Automate.
         </p>
 
         <br>
 
         <p>
-            Actualmente busco oportunidades para trabajar con RPA, automatización inteligente, integraciones y desarrollo
-            de soluciones que generen impacto real en los procesos y resultados de las empresas.
+            Abierto a oportunidades en RPA, automatización inteligente e integraciones entre sistemas.
         </p>
 
     </div>
@@ -300,6 +317,125 @@
 <h2>Proyectos</h2>
 
 <div class="projetos-grid">
+
+<div class="projeto-card">
+<h3>Robot de Extracción de Tribunales</h3>
+<p>
+Automatización que recopila procesos en los tribunales brasileños: accede al sistema, inicia sesión, descarga los autos, filtra los documentos relevantes y clasifica cada movimiento procesal, generando un JSON estructurado que alimenta el flujo jurídico siguiente. Arquitectura en paquetes independientes por sistema procesal (EPROC, e-SAJ, PJe y PROJUDI) e integración con la API pública DataJud del CNJ. Desarrollado en equipo.
+</p>
+
+<div class="tech">
+<span>Python</span>
+<span>Playwright</span>
+<span>API DataJud (CNJ)</span>
+<span>RPA</span>
+</div>
+</div>
+
+
+<div class="projeto-card">
+<h3>Robot de Comprobantes Judiciales</h3>
+<p>
+Automatización de punta a punta que inicia sesión en el sistema jurídico, exporta el informe de garantías, resuelve el identificador fiscal correspondiente a cada cuenta y consulta el Comprobante de Rescate de Depósito Judicial en el portal público del banco — guardando los PDF automáticamente, nombrados por proceso y período, y registrando el estado de cada consulta en la base.
+</p>
+
+<div class="tech">
+<span>Python</span>
+<span>Playwright</span>
+<span>PDF</span>
+<span>Excel</span>
+</div>
+</div>
+
+
+<div class="projeto-card">
+<h3>Robots de Extracción de Siniestros y Agenda</h3>
+<p>
+Conjunto de automatizaciones que extraen historiales de siniestros de portales de aseguradoras y la agenda de tareas del sistema jurídico, convirtiendo los datos en planillas y JSON estructurado que sirven de entrada para los demás robots de la operación.
+</p>
+
+<div class="tech">
+<span>Python</span>
+<span>Playwright</span>
+<span>JSON</span>
+<span>openpyxl</span>
+</div>
+</div>
+
+
+<div class="projeto-card">
+<h3>Robot de Automatización de Correos (Outlook)</h3>
+<p>
+Robot que lee los correos de una carpeta específica de Outlook, arma la planilla de control y la envía automáticamente a los destinatarios. Distribuido como ejecutable autosuficiente con interfaz gráfica e instalador propio — funciona en cualquier equipo Windows sin instalar Python ni dependencias.
+</p>
+
+<div class="tech">
+<span>Python</span>
+<span>Outlook · pywin32</span>
+<span>CustomTkinter</span>
+<span>PyInstaller</span>
+</div>
+</div>
+
+
+<div class="projeto-card">
+<h3>Robot de Deduplicación de Documentos</h3>
+<p>
+Automatización que recorre la base de documentos del sistema jurídico e identifica archivos duplicados por hash SHA-256, comparando el contenido real y no solo el nombre — liberando espacio en disco y evitando retrabajo en la gestión documental.
+</p>
+
+<div class="tech">
+<span>Python</span>
+<span>SHA-256</span>
+<span>Automatización de Archivos</span>
+</div>
+</div>
+
+
+<div class="projeto-card">
+<h3>Automatización de Documentos de Exportación</h3>
+<p>
+Robots para la emisión de DU-E (Declaración Única de Exportación), Certificado de Origen y certificación Halal, completando los sistemas a partir de planillas de control y archivando automáticamente los documentos emitidos. Desarrollados para operaciones de comercio exterior del agronegocio exportador.
+</p>
+
+<div class="tech">
+<span>Python</span>
+<span>Playwright</span>
+<span>RPA</span>
+<span>Comercio Exterior</span>
+</div>
+</div>
+
+
+<div class="projeto-card">
+<h3>Automatización de Rutinas de Comercio Exterior</h3>
+<p>
+Conjunto de robots para rutinas operativas de exportación: control y conciliación de averbación de embarques, redacción automática de correos a partir de planillas de control e impresión por lotes de facturas y documentos, con interfaz gráfica para los operadores.
+</p>
+
+<div class="tech">
+<span>Python</span>
+<span>Excel</span>
+<span>RPA</span>
+<span>Interfaz Gráfica</span>
+</div>
+</div>
+
+
+<div class="projeto-card">
+<h3>Robot de Registro e-SUS (Salud Pública)</h3>
+<p>
+Automatización que registra fichas de visita domiciliaria y territorial en el e-SUS PAC a partir de una planilla de residentes, distribuyendo los registros a lo largo de los días hábiles — saltando fines de semana y feriados automáticamente — con selección de turnos, vista previa antes de la ejecución e instalador que prepara todo el entorno por sí solo.
+</p>
+
+<div class="tech">
+<span>Python</span>
+<span>Playwright</span>
+<span>Interfaz Gráfica</span>
+<span>e-SUS PAC</span>
+</div>
+</div>
+
 
 <div class="projeto-card">
 <h3>Automatización Jurídica (RPA)</h3>

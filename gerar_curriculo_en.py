@@ -217,14 +217,25 @@ story.append(KeepTogether([
 story += secao("Featured Projects")
 
 projetos = [
+    ("Court Data Extraction Bot",
+     "Automation that collects case files across Brazilian courts: it accesses each court system, downloads "
+     "the case records, filters the relevant documents and classifies every procedural update, producing "
+     "structured JSON for the legal workflow. Architected as independent packages per court system (EPROC, "
+     "e-SAJ, PJe and PROJUDI) and integrated with the CNJ public DataJud API. Built as a team.",
+     "Python · Playwright · DataJud API (CNJ) · RPA"),
+    ("Judicial Deposit Receipts Bot",
+     "End-to-end automation that exports the collateral report from the legal system, resolves the company ID "
+     "for each account and queries the Judicial Deposit Withdrawal Receipt on the bank's portal, saving the "
+     "PDFs automatically and recording the status of each query.",
+     "Python · Playwright · PDF · Excel"),
+    ("Export Documentation Automation",
+     "Bots for issuing DU-E (Brazilian Single Export Declaration), Certificates of Origin and Halal "
+     "certification, filling the systems from tracking spreadsheets and automatically filing the issued documents.",
+     "Python · Playwright · RPA · Foreign Trade"),
     ("Legal Automation (RPA)",
      "Bots to automate legal tasks: issuing judicial release orders, generating court fee slips, judicial "
      "calculations, initial pleadings and controllership routines.",
      "Python · Selenium · Playwright · RPA"),
-    ("System Integration Bots",
-     "Automations responsible for claim intake, importing and exporting data between corporate systems "
-     "and automated information processing.",
-     "Python · C# · REST APIs"),
     ("Automation Management Platform",
      "Internal system to register, monitor and manage the company's multiple bots and automated "
      "processes.",

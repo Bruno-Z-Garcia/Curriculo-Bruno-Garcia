@@ -146,41 +146,58 @@
         <h2>About Me</h2>
 
         <p>
-            My name is Bruno Garcia, I'm 25 years old and I hold a degree in Information Technology Management from UniCuritiba.
-            I have been working in technology for over four years, focusing on RPA, process automation and the development
-            of solutions that streamline operations, reduce manual work and increase productivity.
+            RPA Developer with over 4 years in technology, specialized in process automation and in building
+            solutions that remove manual work and give time back to operations.
         </p>
 
         <br>
 
         <p>
-            I build bots and automations using <strong>Python, C#, Selenium, Playwright and Power Automate Desktop</strong>,
-            automating legal and administrative processes: web automation, document generation and processing
-            (PDF and Word), data extraction and transformation, and system integrations through REST APIs.
+            Today I build bots and systems that automate legal, administrative and foreign trade processes —
+            working end to end: requirements gathering, solution architecture, development, deployment and
+            production support.
+        </p>
+
+        <br>
+
+        <p>What I do day to day:</p>
+
+        <ul class="sobre-lista">
+            <li>Automation bots (RPA) with <strong>Python, C#, Playwright, Selenium and Power Automate Desktop</strong></li>
+            <li>Document automation: PDF and Word generation and processing, data extraction and transformation</li>
+            <li>System integrations via REST APIs, including legal platforms such as CPJ, XJUS and Preâmbulo</li>
+            <li>Web applications and backend in Python (Flask), with MySQL and SQL Server</li>
+            <li>Artificial Intelligence applied to business processes (OpenAI API)</li>
+            <li>Dashboards and indicators (KPIs) for operational tracking</li>
+            <li>Deployment, servers and cloud environments (Microsoft Azure)</li>
+        </ul>
+
+        <br>
+
+        <p>
+            Before moving into development, I worked in IT support and infrastructure at the Court of Justice of
+            Paraná and at SpaceSet. That background matters today: I understand the environment the bots run in,
+            not just their code.
         </p>
 
         <br>
 
         <p>
-            I have experience with end-to-end projects — from requirements gathering and solution architecture to
-            deployment, acceptance testing and production support. This includes database modeling (MySQL and SQL Server),
-            backend development in Python (Flask), building management dashboards and applying
-            Artificial Intelligence (OpenAI API) to business processes.
+            I was a volunteer scout for 12 years, a period that shaped how I work — organization, discipline,
+            responsibility and the willingness to see a problem through to the end.
         </p>
 
         <br>
 
         <p>
-            Beyond my technical experience, I was a volunteer scout for 12 years, a period in which I developed
-            skills such as leadership, organization, discipline, resilience and responsibility — competencies I apply
-            directly to project management and teamwork.
+            Degree in Information Technology Management from UniCuritiba. Currently specializing in RPA with
+            UiPath and Automate.
         </p>
 
         <br>
 
         <p>
-            I am currently looking for opportunities to work with RPA, intelligent automation, integrations and the
-            development of solutions that create real impact on companies' processes and results.
+            Open to opportunities in RPA, intelligent automation and system integrations.
         </p>
 
     </div>
@@ -300,6 +317,125 @@
 <h2>Projects</h2>
 
 <div class="projetos-grid">
+
+<div class="projeto-card">
+<h3>Court Data Extraction Bot</h3>
+<p>
+Automation that collects case files across Brazilian courts: it accesses each court system, logs in, downloads the case records, filters the relevant documents and classifies every procedural update, producing structured JSON that feeds the downstream legal workflow. Architected as independent packages per court system (EPROC, e-SAJ, PJe and PROJUDI) and integrated with the CNJ public DataJud API. Built as a team.
+</p>
+
+<div class="tech">
+<span>Python</span>
+<span>Playwright</span>
+<span>DataJud API (CNJ)</span>
+<span>RPA</span>
+</div>
+</div>
+
+
+<div class="projeto-card">
+<h3>Judicial Deposit Receipts Bot</h3>
+<p>
+End-to-end automation that logs into the legal system, exports the collateral report, resolves the matching company ID for each account and queries the Judicial Deposit Withdrawal Receipt on the bank's public portal — saving the PDFs automatically, named by case and period, and writing each query's status back to the database.
+</p>
+
+<div class="tech">
+<span>Python</span>
+<span>Playwright</span>
+<span>PDF</span>
+<span>Excel</span>
+</div>
+</div>
+
+
+<div class="projeto-card">
+<h3>Claims History &amp; Docket Extraction Bots</h3>
+<p>
+A set of automations that extract claims history from insurance portals and the task docket from the legal system, converting the data into spreadsheets and structured JSON that serve as input for the other bots in the operation.
+</p>
+
+<div class="tech">
+<span>Python</span>
+<span>Playwright</span>
+<span>JSON</span>
+<span>openpyxl</span>
+</div>
+</div>
+
+
+<div class="projeto-card">
+<h3>Email Automation Bot (Outlook)</h3>
+<p>
+Bot that reads emails from a specific Outlook folder, builds the tracking spreadsheet and sends it automatically to the recipients. Shipped as a self-contained executable with a graphical interface and its own installer — it runs on any Windows machine without installing Python or dependencies.
+</p>
+
+<div class="tech">
+<span>Python</span>
+<span>Outlook · pywin32</span>
+<span>CustomTkinter</span>
+<span>PyInstaller</span>
+</div>
+</div>
+
+
+<div class="projeto-card">
+<h3>Document Deduplication Bot</h3>
+<p>
+Automation that scans the legal system's document base and identifies duplicate files by SHA-256 hash, comparing actual content rather than just filenames — freeing up disk space and preventing rework in document management.
+</p>
+
+<div class="tech">
+<span>Python</span>
+<span>SHA-256</span>
+<span>File Automation</span>
+</div>
+</div>
+
+
+<div class="projeto-card">
+<h3>Export Documentation Automation</h3>
+<p>
+Bots for issuing DU-E (Brazilian Single Export Declaration), Certificates of Origin and Halal certification, filling the systems from tracking spreadsheets and automatically filing the issued documents. Built for foreign trade operations in the agribusiness export sector.
+</p>
+
+<div class="tech">
+<span>Python</span>
+<span>Playwright</span>
+<span>RPA</span>
+<span>Foreign Trade</span>
+</div>
+</div>
+
+
+<div class="projeto-card">
+<h3>Foreign Trade Routine Automation</h3>
+<p>
+A set of bots for operational export routines: tracking and reconciling shipment endorsements, automatically composing emails from tracking spreadsheets, and batch printing invoices and documents, with a graphical interface for the operators.
+</p>
+
+<div class="tech">
+<span>Python</span>
+<span>Excel</span>
+<span>RPA</span>
+<span>GUI</span>
+</div>
+</div>
+
+
+<div class="projeto-card">
+<h3>e-SUS Registration Bot (Public Health)</h3>
+<p>
+Automation that registers home and territorial visit forms in the e-SUS PAC public health system from a residents spreadsheet, distributing the records across business days — automatically skipping weekends and holidays — with shift selection, a preview before execution and an installer that sets up the whole environment on its own.
+</p>
+
+<div class="tech">
+<span>Python</span>
+<span>Playwright</span>
+<span>GUI</span>
+<span>e-SUS PAC</span>
+</div>
+</div>
+
 
 <div class="projeto-card">
 <h3>Legal Automation (RPA)</h3>

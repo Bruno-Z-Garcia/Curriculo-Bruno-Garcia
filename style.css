@@ -359,6 +359,18 @@ ul {
     max-width: 90%;
 }
 
+/* lista de atribuicoes da secao Sobre Mim */
+#sobre .sobre-lista {
+    list-style-position: outside;
+    padding-left: 22px;
+    max-width: 100%;
+    margin: 0;
+}
+
+#sobre .sobre-lista li {
+    margin-bottom: 8px;
+}
+
 section p {
     text-align: justify;
     margin: 0 auto;

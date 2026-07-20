@@ -146,41 +146,58 @@
         <h2>Sobre Mim</h2>
 
         <p>
-            Meu nome é Bruno Garcia, tenho 25 anos e sou formado em Gestão da Tecnologia da Informação pela UniCuritiba.
-            Atuo há mais de quatro anos na área de tecnologia, com foco em RPA, automação de processos e desenvolvimento
-            de soluções que otimizam operações, reduzem atividades manuais e aumentam a produtividade.
+            Desenvolvedor RPA com mais de 4 anos em tecnologia, especializado em automação de processos e no
+            desenvolvimento de soluções que eliminam trabalho manual e devolvem tempo às operações.
         </p>
 
         <br>
 
         <p>
-            Desenvolvo robôs e automações utilizando <strong>Python, C#, Selenium, Playwright e Power Automate Desktop</strong>,
-            automatizando processos jurídicos e administrativos: automação web, geração e processamento de documentos
-            (PDF e Word), extração e tratamento de dados e integração entre sistemas por meio de APIs REST.
+            Hoje desenvolvo robôs e sistemas que automatizam processos jurídicos, administrativos e de comércio
+            exterior — atuando de ponta a ponta: levantamento de requisitos, arquitetura da solução, desenvolvimento,
+            implantação e sustentação em produção.
+        </p>
+
+        <br>
+
+        <p>O que faço no dia a dia:</p>
+
+        <ul class="sobre-lista">
+            <li>Robôs de automação (RPA) com <strong>Python, C#, Playwright, Selenium e Power Automate Desktop</strong></li>
+            <li>Automação de documentos: geração e processamento de PDF e Word, extração e tratamento de dados</li>
+            <li>Integrações entre sistemas via APIs REST, incluindo sistemas jurídicos como CPJ, XJUS e Preâmbulo</li>
+            <li>Aplicações web e backend em Python (Flask), com MySQL e SQL Server</li>
+            <li>Inteligência Artificial aplicada a processos corporativos (API OpenAI)</li>
+            <li>Dashboards e indicadores (KPIs) para acompanhamento operacional</li>
+            <li>Deploy, servidores e ambientes em cloud (Microsoft Azure)</li>
+        </ul>
+
+        <br>
+
+        <p>
+            Antes de migrar para desenvolvimento, passei por suporte e infraestrutura de TI no Tribunal de Justiça
+            do Paraná e na SpaceSet. Essa base faz diferença hoje: entendo o ambiente onde os robôs rodam, e não só
+            o código deles.
         </p>
 
         <br>
 
         <p>
-            Tenho experiência em projetos end-to-end — do levantamento de requisitos e arquitetura da solução até a
-            implantação, homologação e sustentação em produção. Isso inclui modelagem de banco de dados (MySQL e SQL Server),
-            desenvolvimento backend em Python (Flask), construção de dashboards gerenciais e aplicação de
-            Inteligência Artificial (API OpenAI) em processos corporativos.
+            Fui escoteiro voluntário por 12 anos, período que moldou a forma como trabalho — organização, disciplina,
+            responsabilidade e a disposição de levar um problema até o fim.
         </p>
 
         <br>
 
         <p>
-            Além da experiência técnica, fui escoteiro voluntário por 12 anos, período no qual desenvolvi
-            habilidades como liderança, organização, disciplina, resiliência e responsabilidade — competências que aplico
-            diretamente na condução de projetos e no trabalho em equipe.
+            Formado em Gestão da Tecnologia da Informação pela UniCuritiba. Atualmente me especializando em RPA
+            com UiPath e Automate.
         </p>
 
         <br>
 
         <p>
-            Atualmente busco oportunidades para atuar com RPA, automação inteligente, integrações e desenvolvimento
-            de soluções que gerem impacto real nos processos e resultados das empresas.
+            Aberto a oportunidades em RPA, automação inteligente e integrações entre sistemas.
         </p>
 
     </div>
@@ -300,6 +317,125 @@
 <h2>Projetos</h2>
 
 <div class="projetos-grid">
+
+<div class="projeto-card">
+<h3>Robô de Extração de Tribunais</h3>
+<p>
+Automação que coleta processos nos tribunais brasileiros: acessa o sistema, faz login, baixa os autos, filtra os documentos relevantes e classifica cada andamento, gerando um JSON estruturado que alimenta o fluxo jurídico seguinte. Arquitetado em pacotes independentes por sistema processual (EPROC, e-SAJ, PJe e PROJUDI) e integrado à API pública DataJud do CNJ. Desenvolvido em equipe.
+</p>
+
+<div class="tech">
+<span>Python</span>
+<span>Playwright</span>
+<span>API DataJud (CNJ)</span>
+<span>RPA</span>
+</div>
+</div>
+
+
+<div class="projeto-card">
+<h3>Robô de Comprovantes Judiciais</h3>
+<p>
+Automação de ponta a ponta que faz login no sistema jurídico, exporta o relatório de garantias, resolve o CNPJ correspondente a cada conta e consulta o Comprovante de Resgate de Depósito Judicial no portal público do banco — salvando os PDFs automaticamente, nomeados por processo e período, e gravando o status de cada consulta de volta na base.
+</p>
+
+<div class="tech">
+<span>Python</span>
+<span>Playwright</span>
+<span>PDF</span>
+<span>Excel</span>
+</div>
+</div>
+
+
+<div class="projeto-card">
+<h3>Robôs de Extração de Sinistros e Agenda</h3>
+<p>
+Conjunto de automações que extraem históricos de sinistros de portais de seguradoras e a agenda de tarefas do sistema jurídico, convertendo os dados em planilhas e JSON estruturado que servem de entrada para os demais robôs da operação.
+</p>
+
+<div class="tech">
+<span>Python</span>
+<span>Playwright</span>
+<span>JSON</span>
+<span>openpyxl</span>
+</div>
+</div>
+
+
+<div class="projeto-card">
+<h3>Robô de Automação de E-mails (Outlook)</h3>
+<p>
+Robô que lê os e-mails de uma pasta específica do Outlook, monta a planilha de controle e a envia automaticamente aos destinatários. Distribuído como executável autossuficiente com interface gráfica e instalador próprio — roda em qualquer máquina Windows sem precisar instalar Python ou dependências.
+</p>
+
+<div class="tech">
+<span>Python</span>
+<span>Outlook · pywin32</span>
+<span>CustomTkinter</span>
+<span>PyInstaller</span>
+</div>
+</div>
+
+
+<div class="projeto-card">
+<h3>Robô de Deduplicação de Documentos</h3>
+<p>
+Automação que varre a base de documentos do sistema jurídico e identifica arquivos duplicados por hash SHA-256, comparando o conteúdo real e não apenas o nome — liberando espaço em disco e evitando retrabalho na gestão documental.
+</p>
+
+<div class="tech">
+<span>Python</span>
+<span>SHA-256</span>
+<span>Automação de Arquivos</span>
+</div>
+</div>
+
+
+<div class="projeto-card">
+<h3>Automação de Documentos de Exportação</h3>
+<p>
+Robôs para emissão de DU-E (Declaração Única de Exportação), Certificado de Origem e certificação Halal, preenchendo os sistemas a partir de planilhas de controle e arquivando automaticamente os documentos emitidos. Desenvolvidos para operações de comércio exterior do agronegócio exportador.
+</p>
+
+<div class="tech">
+<span>Python</span>
+<span>Playwright</span>
+<span>RPA</span>
+<span>Comércio Exterior</span>
+</div>
+</div>
+
+
+<div class="projeto-card">
+<h3>Automação de Rotinas de Comércio Exterior</h3>
+<p>
+Conjunto de robôs para rotinas operacionais de exportação: controle e conferência de averbação de embarques, preenchimento automático de e-mails a partir de planilhas de controle e impressão em lote de faturas e documentos, com interface gráfica para os operadores.
+</p>
+
+<div class="tech">
+<span>Python</span>
+<span>Excel</span>
+<span>RPA</span>
+<span>Interface Gráfica</span>
+</div>
+</div>
+
+
+<div class="projeto-card">
+<h3>Robô de Cadastro e-SUS (Saúde Pública)</h3>
+<p>
+Automação que cadastra fichas de visita domiciliar e territorial no e-SUS PAC a partir de uma planilha de moradores, distribuindo os registros ao longo dos dias úteis — pulando fins de semana e feriados automaticamente — com escolha de turnos, pré-visualização antes da execução e instalador que prepara todo o ambiente sozinho.
+</p>
+
+<div class="tech">
+<span>Python</span>
+<span>Playwright</span>
+<span>Interface Gráfica</span>
+<span>e-SUS PAC</span>
+</div>
+</div>
+
 
 <div class="projeto-card">
 <h3>Automação Jurídica (RPA)</h3>
