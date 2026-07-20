@@ -639,7 +639,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "APIs REST · Integrações de Sistemas",
                 "IA aplicada · API OpenAI",
                 "MySQL · SQL Server",
-                "DevOps · Microsoft Azure"
+                "Cloud · Microsoft Azure · AWS"
             ],
             en: [
                 "RPA · Process Automation",
@@ -648,7 +648,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "REST APIs · System Integrations",
                 "Applied AI · OpenAI API",
                 "MySQL · SQL Server",
-                "DevOps · Microsoft Azure"
+                "Cloud · Microsoft Azure · AWS"
             ],
             es: [
                 "RPA · Automatización de Procesos",
@@ -657,7 +657,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "APIs REST · Integraciones de Sistemas",
                 "IA aplicada · API OpenAI",
                 "MySQL · SQL Server",
-                "DevOps · Microsoft Azure"
+                "Cloud · Microsoft Azure · AWS"
             ]
         });
 

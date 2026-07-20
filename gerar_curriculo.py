@@ -249,14 +249,14 @@ for titulo, desc, tech in projetos:
 story += secao("Habilidades Técnicas")
 
 habilidades = [
-    ("Automação &amp; RPA", "Selenium, Playwright, Power Automate Desktop, Web Scraping, orquestração de robôs"),
+    ("Automação &amp; RPA", "Selenium, Playwright, Puppeteer, Power Automate Desktop, Web Scraping, orquestração de robôs"),
     ("Linguagens", "Python, C#, SQL, JavaScript, TypeScript, Java, VBA"),
-    ("Backend &amp; APIs", "Flask, Node.js, APIs REST, integrações entre sistemas corporativos"),
-    ("Inteligência Artificial", "Integração com APIs de IA (OpenAI) aplicada a automações e processos corporativos"),
-    ("Bancos de Dados", "MySQL, SQL Server e SQLite — modelagem e otimização de consultas"),
+    ("Backend &amp; APIs", "Flask, Django, Node.js, Express, APIs REST, integrações entre sistemas corporativos"),
+    ("Inteligência Artificial", "Integração com APIs de IA (OpenAI) aplicada a automações e processos corporativos; fundamentos de aprendizado de máquina"),
+    ("Bancos de Dados", "MySQL, SQL Server, SQLite e MongoDB — modelagem e otimização de consultas"),
     ("Dados &amp; Documentos", "Power BI, Excel avançado (VBA), geração de PDF, Word e Excel com Python"),
-    ("Desenvolvimento Web", "HTML, CSS, Bootstrap, React, Angular"),
-    ("DevOps &amp; Cloud", "Git, GitHub, deploy de aplicações, Microsoft Azure"),
+    ("Desenvolvimento Web", "HTML, CSS, Sass, Bootstrap, React, Angular"),
+    ("DevOps &amp; Cloud", "Git, GitHub, deploy de aplicações, Microsoft Azure, AWS (EC2, RDS, S3), NGINX, PM2"),
 ]
 t = Table(
     [[Paragraph(cat, hab_cat_st), Paragraph(desc, bullet_st)] for cat, desc in habilidades],
@@ -280,13 +280,14 @@ story.append(KeepTogether([
 # ---------------------------------------------------------------- cursos
 story += secao("Cursos e Certificações")
 cursos_esq = [
+    "Automação Robótica de Processos (RPA) — DankiCode (em andamento)",
     "C# — DankiCode (2026)",
     "Node.js — DankiCode (2026)",
     "Inteligência Artificial — DankiCode (2026)",
     "DevOps Essential — DankiCode (2026)",
-    "Python Completo — DankiCode (2025)",
 ]
 cursos_dir = [
+    "Python Completo — DankiCode (2025)",
     "Webmaster Front-End Completo — DankiCode (2025)",
     "React Native — DankiCode (2025)",
     "Microsoft Azure — Microsoft (2022)",
