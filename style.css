@@ -277,20 +277,15 @@ footer {
     order: 1;
 }
 
+.navbar-acoes {
+    order: 2;
+    margin-left: auto;
+    margin-right: 14px;
+}
+
 .menu-toggle {
     display: block;
-    order: 2;
-}
-
-.curriculo-download.desktop-only {
-    display: block;
     order: 3;
-    margin-left: 12px;
-}
-
-.curriculo-download.desktop-only a {
-    padding: 6px 12px;
-    font-size: 0.9rem;
 }
 
 .menu {
@@ -312,8 +307,23 @@ footer {
     text-align: center;
 }
 
-.mobile-download {
+.curriculo-download.desktop-only {
     display: none;
+}
+
+.mobile-download {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.mobile-download a {
+    background-color: #00c3ff;
+    color: #000;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: bold;
+    display: inline-block;
 }
 
 .foto-perfil {
@@ -369,6 +379,25 @@ p, li {
 }
 
 @media (max-width: 480px) {
+
+/* navbar apertada: encolhe as bandeiras para o logo não encostar nelas */
+.lang-toggle {
+    gap: 7px;
+}
+
+.lang-btn {
+    width: 30px;
+    height: 30px;
+}
+
+.lang-bandeira {
+    width: 17px;
+    height: 17px;
+}
+
+.navbar-acoes {
+    margin-right: 10px;
+}
 
 .foto-perfil {
     width: 130px;
@@ -1361,22 +1390,27 @@ width:100%;
 }
 
 /* ============================= */
-/* SELETOR DE IDIOMA (RODAPÉ) */
+/* SELETOR DE IDIOMA (NAVBAR) */
 /* ============================= */
+
+.navbar-acoes {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
 
 .lang-toggle {
     display: flex;
     justify-content: center;
-    gap: 14px;
-    margin-bottom: 12px;
+    gap: 10px;
 }
 
 .lang-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 42px;
-    height: 42px;
+    width: 34px;
+    height: 34px;
     border-radius: 50%;
     background: rgba(0, 195, 255, .08);
     border: 1px solid rgba(0, 195, 255, .3);
@@ -1400,8 +1434,8 @@ width:100%;
 
 .lang-bandeira {
     display: inline-flex;
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     overflow: hidden;
     flex-shrink: 0;

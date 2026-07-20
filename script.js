@@ -10,9 +10,16 @@ document.addEventListener("DOMContentLoaded", function () {
     // IDIOMA DA PÁGINA
     // =============================
 
-    // o mesmo script atende index.html (pt-BR) e index-en.html (en);
+    // o mesmo script atende index.html (pt-BR), index-en.html (en) e index-es.html (es);
     // os textos gerados via JS mudam conforme o lang do documento
-    const idiomaEN = (document.documentElement.lang || "").toLowerCase().startsWith("en");
+    const langDocumento = (document.documentElement.lang || "").toLowerCase();
+
+    const idioma = langDocumento.startsWith("en") ? "en"
+        : langDocumento.startsWith("es") ? "es"
+        : "pt";
+
+    // traduz a partir de um dicionário { pt, en, es }; cai no pt se faltar a chave
+    const t = (dic) => (dic[idioma] !== undefined ? dic[idioma] : dic.pt);
 
     // =============================
     // FUNDO INTERATIVO — PLACA DE CIRCUITO
@@ -48,10 +55,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const PALAVRAS_TECH = [
             "RPA", "Python", "C#", "Playwright", "Selenium", "Power Automate",
-            "Flask", idiomaEN ? "REST API" : "API REST", "MySQL", "SQL Server", "OpenAI", "Azure",
+            "Flask", t({ pt: "API REST", en: "REST API", es: "API REST" }), "MySQL", "SQL Server", "OpenAI", "Azure",
             "bot.run()", "page.click()", "web scraping",
-            idiomaEN ? "automation" : "automação", idiomaEN ? "bots" : "robôs",
-            idiomaEN ? "AI" : "IA", "</>", "{ }", "git push", "deploy", "async/await", "SELECT *"
+            t({ pt: "automação", en: "automation", es: "automatización" }),
+            t({ pt: "robôs", en: "bots", es: "robots" }),
+            t({ pt: "IA", en: "AI", es: "IA" }), "</>", "{ }", "git push", "deploy", "async/await", "SELECT *"
         ];
 
         let largura, altura, extra;
@@ -475,8 +483,8 @@ document.addEventListener("DOMContentLoaded", function () {
         if (botao) {
             botao.setAttribute("aria-expanded", aberto);
             botao.setAttribute("aria-label", aberto
-                ? (idiomaEN ? "Close menu" : "Fechar menu")
-                : (idiomaEN ? "Open menu" : "Abrir menu"));
+                ? t({ pt: "Fechar menu", en: "Close menu", es: "Cerrar menú" })
+                : t({ pt: "Abrir menu", en: "Open menu", es: "Abrir menú" }));
         }
     };
 
@@ -623,23 +631,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (typewriter) {
 
-        const frases = idiomaEN ? [
-            "RPA · Process Automation",
-            "Playwright · Selenium · Power Automate",
-            "Python · C# · Flask",
-            "REST APIs · System Integrations",
-            "Applied AI · OpenAI API",
-            "MySQL · SQL Server",
-            "DevOps · Microsoft Azure"
-        ] : [
-            "RPA · Automação de Processos",
-            "Playwright · Selenium · Power Automate",
-            "Python · C# · Flask",
-            "APIs REST · Integrações de Sistemas",
-            "IA aplicada · API OpenAI",
-            "MySQL · SQL Server",
-            "DevOps · Microsoft Azure"
-        ];
+        const frases = t({
+            pt: [
+                "RPA · Automação de Processos",
+                "Playwright · Selenium · Power Automate",
+                "Python · C# · Flask",
+                "APIs REST · Integrações de Sistemas",
+                "IA aplicada · API OpenAI",
+                "MySQL · SQL Server",
+                "DevOps · Microsoft Azure"
+            ],
+            en: [
+                "RPA · Process Automation",
+                "Playwright · Selenium · Power Automate",
+                "Python · C# · Flask",
+                "REST APIs · System Integrations",
+                "Applied AI · OpenAI API",
+                "MySQL · SQL Server",
+                "DevOps · Microsoft Azure"
+            ],
+            es: [
+                "RPA · Automatización de Procesos",
+                "Playwright · Selenium · Power Automate",
+                "Python · C# · Flask",
+                "APIs REST · Integraciones de Sistemas",
+                "IA aplicada · API OpenAI",
+                "MySQL · SQL Server",
+                "DevOps · Microsoft Azure"
+            ]
+        });
 
         if (reduzirMovimento) {
 
@@ -853,9 +873,11 @@ document.addEventListener("DOMContentLoaded", function () {
             meses -= 12;
         }
 
-        const palavras = idiomaEN
-            ? { singAno: " year", plurAno: " years", singMes: " month", plurMes: " months", e: " and ", vazio: "less than 1 month" }
-            : { singAno: " ano", plurAno: " anos", singMes: " mês", plurMes: " meses", e: " e ", vazio: "menos de 1 mês" };
+        const palavras = t({
+            pt: { singAno: " ano", plurAno: " anos", singMes: " mês", plurMes: " meses", e: " e ", vazio: "menos de 1 mês" },
+            en: { singAno: " year", plurAno: " years", singMes: " month", plurMes: " months", e: " and ", vazio: "less than 1 month" },
+            es: { singAno: " año", plurAno: " años", singMes: " mes", plurMes: " meses", e: " y ", vazio: "menos de 1 mes" }
+        });
 
         let resultado = "";
 
